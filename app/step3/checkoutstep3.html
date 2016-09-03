@@ -1,0 +1,699 @@
+<header-container></header-container>
+<div class="container">
+<div class="mainError errors" id="formErrors" ng-if="detailsFieldsInfo"><ul><li class="error">{{'lbl_errormessage' | translate }}</li></ul></div>
+
+  <div id="wrapper">
+
+  <form name="detailsForm" id="login" novalidate>
+
+    <div class="frame-container eligibleMessage">
+      <div class="frame-content">
+        <div class="grandTitle visible-desktop visible-tablet">
+          <h1 class="pull-left">{{'lbl_vdsccheckout' | translate }}</h1>
+          <div class="pull-right faqIcon"><a  data-toggle="modal" role="button" data-target="#faqModal" href=""><img src="img/faq_icon.png" class="pull-left"/> {{'lbl_frequentque' | translate }}</a></div>
+        </div>
+        <div class="content">
+         
+          <div class="step-wrapper" data-bubble-quantity="3">
+            <ol class="step-indicator" role="progressbar" aria-valuetext="">
+              <li class="step step-done" aria-hidden="true"></li>
+              <li class="step step-done" aria-hidden="true"></li>
+              <li class="step step-done" aria-hidden="true"></li>
+            </ol>
+            <h1 class="step-label"> {{'lbl_checkout3' | translate }}:
+              <div class="step-description">{{'lbl_checkout3_head' | translate }}</div>
+            </h1>
+          </div>
+
+           <!-- <p>{{'lbl_deliverydescription' | translate }}</p>-->
+
+            <div id="subscriber_data">
+            
+            <uib-accordion close-others="false">
+             
+                <uib-accordion-group heading="{{'lbl_orderdetails' | translate }}" is-open="false">
+            	<div class="col-md-6">
+
+                	<h5>{{'lbl_typeofengg' | translate }}</h5>
+						<dl class="dl-horizontal reviewAddress">
+						  <div class="clearfix"></div>
+                          <dt>{{'lbl_custtype' | translate }}</dt>
+                          <dd>{{details.vdscRequestBean.header.customerType | translate}}</dd>
+						  
+						  <div class="clearfix"></div>
+                          <dt>{{'lbl_carrier' | translate }}</dt>
+                          <dd>{{details.vdscRequestBean.header.carrier | translate}}</dd>
+
+                          <div class="clearfix"></div>
+                          <dt>{{'lbl_ordertype' | translate }}</dt>
+                          <dd>{{details.vdscRequestBean.header.orderType | translate}}</dd>
+                        </dl>
+
+                	<h5>{{'lbl_hiredservices' | translate }}</h5>
+						<dl class="dl-horizontal reviewAddress">
+						  <div class="clearfix"></div>
+                          <dt>{{'lbl_units' | translate }}</dt>
+                          <dd>{{details.vdscRequestBean.products.ratePlan[0].units}}</dd>
+
+                          <div class="clearfix"></div>
+                          <dt>{{'lbl_rateplan' | translate }}</dt>
+                          <dd>{{details.vdscRequestBean.products.ratePlan[0].planType}}</dd>
+
+                          <div class="clearfix"></div>
+                          <dt>{{'lbl_feature' | translate }}</dt>
+                          <dd>{{details.vdscRequestBean.products.ratePlan[0].features}}</dd>
+
+                          <div class="clearfix"></div>
+                          <dt>{{'lbl_minimumterm' | translate }}</dt>
+                          <dd>{{details.vdscRequestBean.products.ratePlan[0].minTermForced | translate}} : {{details.vdscRequestBean.products.ratePlan[0].minTermLength}}</dd>
+                          
+                          <div class="clearfix"></div>
+                          <dt>{{'lbl_estimateddateofrenewal' | translate }}<br/>{{'lbl_estimateddateofrenewal1' | translate }}</dt>
+                          <dd>{{estimatedMonthdate | translate}}-{{estimatedYeardate}}</dd>
+
+						  <div class="clearfix"></div>
+                          <dt>{{'lbl_unitprice' | translate }}</dt>
+                          <dd>{{details.vdscRequestBean.products.ratePlan[0].unitPrice}}</dd>
+
+                          <div class="clearfix"></div>
+                          <dt>{{'lbl_totalvatincluded' | translate }}</dt>
+                          <dd>{{details.vdscRequestBean.products.ratePlan[0].totalPriceIvaIncluded}}</dd>
+
+                        </dl>
+
+
+                	<h5>{{'lbl_equipment' | translate }}</h5>
+						<dl class="dl-horizontal reviewAddress">
+						  <div class="clearfix"></div>
+                          <dt>{{'lbl_units' | translate }}</dt>
+                          <dd>{{details.vdscRequestBean.products.equipment[0].deviceInfo.units}}</dd>
+
+						  <div class="clearfix"></div>
+                          <dt>{{'lbl_description' | translate }}</dt>
+                          <dd>{{details.vdscRequestBean.products.equipment[0].deviceInfo.description}}</dd>
+
+                          <div class="clearfix"></div>
+                          <dt>{{'lbl_feature' | translate }}</dt>
+                          <dd>{{details.vdscRequestBean.products.equipment[0].deviceInfo.features}}</dd>                          
+                          
+                          <div class="clearfix"></div>
+                          <dt>{{'lbl_key' | translate }}</dt>
+                          <dd>{{details.vdscRequestBean.products.equipment[0].deviceInfo.deviceKey}}</dd>
+
+                          <div class="clearfix"></div>
+                          <dt>{{'lbl_unitprice/mpe' | translate }}</dt>
+                          <dd>{{details.vdscRequestBean.products.equipment[0].deviceInfo.unitPriceMpe}}</dd>
+
+						  <div class="clearfix"></div>
+                          <dt>{{'lbl_totalvatincluded' | translate }}</dt>
+                          <dd>{{details.vdscRequestBean.products.equipment[0].deviceInfo.totalPriceIvaIncluded}}</dd>
+
+                        </dl>
+
+					<h5>{{'lbl_paymentinformation' | translate }}</h5>
+						<dl class="dl-horizontal reviewAddress">
+						
+						  <div class="clearfix"></div>
+						  <dt>{{'lbl_modality' | translate }}</dt>
+                          <dd>{{details.vdscRequestBean.paymentInfo.payment.paymentMode | translate}}</dd>
+						  
+						  <div class="clearfix"></div>
+                          <dt>{{'lbl_methodofpayment' | translate }}</dt>
+                          <dd>{{details.vdscRequestBean.paymentInfo.payment.paymentType | translate}}</dd>
+
+						  <div class="clearfix"></div>
+                          <dt>{{'lbl_cardno' | translate }}</dt>
+                          <dd ng-show="(details.vdscRequestBean.paymentInfo.payment.paymentType=='Credit Card' || details.vdscRequestBean.paymentInfo.payment.paymentType=='Debit Card') && maskedCC"><a id="maskedValue" ng-click="unmaskedCC()">{{maskCreditCardVal}}</a></dd>
+                          <dd ng-show="(details.vdscRequestBean.paymentInfo.payment.paymentType=='Credit Card' || details.vdscRequestBean.paymentInfo.payment.paymentType=='Debit Card') && !maskedCC">{{details.vdscRequestBean.paymentInfo.creditCard.cardNumber}}</dd>
+
+                          <div class="clearfix"></div>
+                          <dt>{{'lbl_expedition' | translate }}</dt>
+                          <dd ng-show="details.vdscRequestBean.paymentInfo.payment.paymentType=='Credit Card' || details.vdscRequestBean.paymentInfo.payment.paymentType=='Debit Card'">{{displayExpeditionDate}}</dd>                          
+                          
+                          <div class="clearfix"></div>
+                          <dt>{{'lbl_expires' | translate }}</dt>
+                          <dd ng-show="details.vdscRequestBean.paymentInfo.payment.paymentType=='Credit Card' || details.vdscRequestBean.paymentInfo.payment.paymentType=='Debit Card'">{{displayExpirationDate}}</dd>
+						</dl>
+						
+						<div class="clearfix"></div>
+					<h5>{{'lbl_paymentconditions' | translate }}</h5>
+						<dl class="dl-horizontal reviewAddress">
+						  <div class="clearfix"></div>
+                          <dt>{{'lbl_equip' | translate }}</dt>
+                          <dd>{{details.vdscRequestBean.paymentInfo.payment.equipment | translate}}</dd>
+
+						  <div class="clearfix"></div>
+                          <dt>{{'lbl_service' | translate }}</dt>
+                          <dd>{{details.vdscRequestBean.paymentInfo.payment.service | translate}}</dd>
+						</dl>
+				
+
+                	<h5>{{'lbl_generalsalesinfo' | translate }}</h5>
+
+						<dl class="dl-horizontal reviewAddress">
+						    <div class="clearfix"></div>
+							<dt>{{'lbl_deliveryaddstreet' | translate }}</dt>
+							<dd>{{details.vdscRequestBean.products.equipment[0].deliveryInformation.deliveryAddress.addressLine1}} &nbsp;</dd>
+							
+							<div class="clearfix"></div>
+							<dt>{{'lbl_city' | translate }}</dt>
+							<dd>{{details.vdscRequestBean.products.equipment[0].deliveryInformation.deliveryAddress.city}} &nbsp;</dd>
+							
+							<div class="clearfix"></div>
+							<dt>{{'lbl_suburb' | translate }}</dt>
+							<dd>{{details.vdscRequestBean.products.equipment[0].deliveryInformation.deliveryAddress.suburb}} &nbsp;</dd>
+							
+							<div class="clearfix"></div>
+							<dt>{{'lbl_municipaloffice' | translate }}</dt>
+							<dd>{{details.vdscRequestBean.products.equipment[0].deliveryInformation.deliveryAddress.municipalOffice}} &nbsp;</dd>
+							
+							<div class="clearfix"></div>
+							<dt>{{'lbl_state' | translate }}</dt>
+							<dd>{{details.vdscRequestBean.products.equipment[0].deliveryInformation.deliveryAddress.state}} &nbsp;</dd>
+							
+							<div class="clearfix"></div>
+							<dt>{{'lbl_z.c.' | translate }}</dt>
+							<dd>{{details.vdscRequestBean.products.equipment[0].deliveryInformation.deliveryAddress.zip}} &nbsp;</dd>
+							
+							<div class="clearfix"></div>
+							<dt>{{'lbl_phone' | translate }}</dt>
+							<dd>{{details.vdscRequestBean.products.equipment[0].deliveryInformation.deliveryInfo.phoneNumber}} &nbsp;</dd>
+							
+							<div class="clearfix"></div>
+							<dt>{{'lbl_personauth' | translate }}</dt>
+							<dd>{{details.vdscRequestBean.products.equipment[0].deliveryInformation.deliveryInfo.firstName}} &nbsp;</dd>
+							
+							<div class="clearfix"></div>
+							<dt>{{'lbl_dateofdelivery' | translate }}</dt>
+							<dd>{{details.vdscRequestBean.products.equipment[0].deliveryInformation.deliveryInfo.deliveryDate | date:"dd/MM/yyyy"}} &nbsp;</dd>
+							
+							<div class="clearfix"></div>
+							<dt>{{'lbl_deliverytimeequip' | translate }}</dt>
+							<dd>{{details.vdscRequestBean.products.equipment[0].deliveryInformation.deliveryInfo.deliveryTime}} &nbsp;</dd>
+							
+						</dl>
+						
+				</div>
+
+                
+
+            	<div class="col-md-6">
+                	<h5>{{'lbl_subscriberdata' | translate }}</h5>
+
+						<dl class="dl-horizontal reviewAddress">
+						  <div class="clearfix"></div>
+						  <dt>{{'lbl_businessname' | translate }}</dt>
+                          <dd>{{details.vdscRequestBean.customerInfo.customer.businessName}}</dd>
+                          
+                          <div class="clearfix"></div>
+                          <dt>{{'lbl_firstName' | translate }}</dt>
+                          <dd>{{details.vdscRequestBean.customerInfo.customer.firstName}}</dd>
+                          
+                          <div class="clearfix"></div>
+                          <dt>{{'lbl_paternalName' | translate }}</dt>
+                          <dd>{{details.vdscRequestBean.customerInfo.customer.paternalName}}</dd>
+                          
+                          <div class="clearfix"></div>
+                          <dt>{{'lbl_maternalName' | translate }}</dt>
+                          <dd>{{details.vdscRequestBean.customerInfo.customer.maternalName}}</dd>
+
+						  <div class="clearfix"></div>
+                          <dt>{{'lbl_tin' | translate }}</dt>
+                          <dd>{{details.vdscRequestBean.customerInfo.customer.rfc}}</dd>
+
+						  <div class="clearfix"></div>
+                          <dt>{{'lbl_legalrep' | translate }}</dt>
+                          <dd>{{details.vdscRequestBean.customerInfo.customer.legalRepresentative}}</dd>
+                          
+                          <div class="clearfix"></div>
+                          <dt>{{'lbl_legal_phone' | translate }}</dt>
+                          <dd>{{details.vdscRequestBean.customerInfo.customer.legalRepPhone}}</dd>
+
+						  <div class="clearfix"></div>
+                          <dt>{{'lbl_nationality' | translate }}</dt>
+                          <dd>{{details.vdscRequestBean.customerInfo.customer.nationality}}</dd>
+                          
+                          <div class="clearfix"></div>
+                          <dt>{{'lbl_typeofofficialid' | translate }}<br />{{'lbl_identification' | translate }}</dt>
+                          <dd>{{details.vdscRequestBean.customerInfo.customer.idType}}</dd>
+                          
+						  <div class="clearfix"></div>
+                          <dt>{{'lbl_identificationno' | translate }}</dt>
+                          <dd>{{details.vdscRequestBean.customerInfo.customer.idNumber}}</dd>
+						  
+						  <div class="clearfix"></div>
+                          <dt>{{'lbl_adresstype' | translate }}</dt>
+                          <dd>{{displayAddressType | translate}}</dd>
+                          
+                          <div class="clearfix"></div>
+                          <dt>{{'lbl_legaladress' | translate }}<br />{{'lbl_andnumder' | translate }}</dt>
+                          <dd>{{details.vdscRequestBean.customerInfo.address.addressLine1}}</dd>
+                          
+                          <div class="clearfix"></div>
+                          <dt>{{'lbl_city' | translate }}</dt>
+                          <dd>{{details.vdscRequestBean.customerInfo.address.city}}</dd>
+
+						  <div class="clearfix"></div>
+                          <dt>{{'lbl_suburb' | translate }}</dt>
+                          <dd>{{details.vdscRequestBean.customerInfo.address.suburb}}</dd>
+                          
+                          <div class="clearfix"></div>
+                          <dt>{{'lbl_municipaloffice' | translate }}</dt>
+                          <dd>{{details.vdscRequestBean.customerInfo.address.municipalOffice}}</dd>
+
+						  <div class="clearfix"></div>
+                          <dt>{{'lbl_state' | translate }}</dt>
+                          <dd>{{details.vdscRequestBean.customerInfo.address.state}}</dd>
+
+						  <div class="clearfix"></div>
+                          <dt>{{'lbl_z.c.' | translate }}</dt>
+                          <dd>{{details.vdscRequestBean.customerInfo.address.zip}}</dd>
+                          
+                          <div class="clearfix"></div>
+                          <dt>{{'lbl_custcategory' | translate }}</dt>
+                          <dd>{{details.vdscRequestBean.customerInfo.customer.customerCategory}}</dd>
+ 
+						  <div class="clearfix"></div>
+                          <dt>{{'lbl_acctype' | translate }}</dt>
+                          <dd>{{details.vdscRequestBean.customerInfo.customer.accountType | translate}}</dd>
+
+                        </dl>
+                </div>
+                <div class="col-md-6">
+                <h5>{{'lbl_salesinfo' | translate }}</h5>
+                
+                   <dl class="dl-horizontal reviewAddress">
+                            <div class="clearfix"></div>
+                            <dt>{{'lbl_salesname' | translate }}</dt>
+							<dd>{{details.vdscRequestBean.salesRepInformation.firstName}}</dd>
+                            
+                            <div class="clearfix"></div>
+                            <dt>{{'lbl_placeofsale' | translate }}</dt>
+							<dd>{{details.vdscRequestBean.salesRepInformation.placeOfSale}}</dd>
+                            
+                            <div class="clearfix"></div>
+                            <dt>{{'lbl_city' | translate }}</dt>
+							<dd>{{details.vdscRequestBean.salesRepInformation.city}}</dd>
+                            
+                            <div class="clearfix"></div>
+                            <dt>{{'lbl_saleschannel' | translate }}</dt>
+							<dd>{{details.vdscRequestBean.salesRepInformation.salesChannel}}</dd>
+                            
+                            <div class="clearfix"></div>
+                            <dt>{{'lbl_appointmentdate' | translate }}</dt>
+							<dd>{{details.vdscRequestBean.salesRepInformation.appointmentDate | date:"dd/MM/yyyy"}}</dd>
+                            
+                            <div class="clearfix"></div>
+                            <dt>{{'lbl_salesrepkey' | translate }}</dt>
+							<dd>{{details.vdscRequestBean.salesRepInformation.salesRepKey}}</dd>
+                            
+                            <div class="clearfix"></div>
+                            <dt>{{'lbl_pointofsalekey' | translate }}</dt>
+							<dd>{{details.vdscRequestBean.salesRepInformation.pointOfSalekey}}</dd>
+                            
+                            <div class="clearfix"></div>
+                            <dt>{{'lbl_cadkey' | translate }}</dt>
+							<dd>{{details.vdscRequestBean.salesRepInformation.cadKey}}</dd>
+                            
+                            <div class="clearfix"></div>
+                            <dt>{{'lbl_cadname' | translate }}</dt>
+							<dd>{{details.vdscRequestBean.salesRepInformation.cadName}}</dd>
+							
+							<div class="clearfix"></div>
+							<dt>{{'lbl_nameofsalesco' | translate }}</dt>
+							<dd>{{details.vdscRequestBean.salesRepInformation.salesCoordinator}}</dd>
+                  
+                   </dl>
+                </div>
+               
+                </uib-accordion-group>
+                </uib-accordion>
+            </div>
+
+            <div class="clearfix"></div>
+	<div class="requiredFields1"><span class="required">*</span>{{'lbl_requiredfields' | translate }}</div>
+	<div class="contentSection">
+      	<div class="col-md-12">
+            <h2>{{'lbl_references' | translate }}:</h2>
+            <p class="contactInformationText">{{'lbl_billinginfocontent' | translate }}</p>
+            <div class="field-row topPad10">
+              <label><span class="required">*</span>{{'lbl_referencetype' | translate }}</label>
+              	<div class="column">
+              		<select class="mod-select" id="phoneType1" style="width: 200px;" name="refType" ng-class="{ 'hasError': detailsForm.$submitted && detailsForm.refType.$invalid }" ng-model="DetailInformation.referenceInfo.referenceType" required>
+              		<option value="" data-default-placeholder="true" selected="">{{'lbl_selectone' | translate }}</option>
+                      <option value="Commercial" selected="selected">{{'lbl_Comerciales' | translate}}</option>
+                      <option value="Personal">{{'lbl_Personales' | translate}}</option>
+                    </select>
+                    <span class="required" ng-show="detailsForm.$submitted && detailsForm.refType.$error.required">{{'lbl_texterrormessage2' | translate }}</span> 
+            	</div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="field-row">
+              <label for="referencename"><span class="required"></span><span class="required">*</span>{{'lbl_referencename' | translate }}</label>
+              	<div class="column">
+              		<input type="text" name="referenceName" ng-class="{ 'hasError': detailsForm.$submitted && detailsForm.referenceName.$invalid }" ng-model="DetailInformation.referenceInfo.referenceName" ng-pattern="/^[A-Za-z\d\s]+$/" maxlength="100" required/>
+            	</div>
+            </div>
+			<div class="clearfix"></div>
+            <span class="required textrightallign"  ng-show="detailsForm.$submitted && detailsForm.referenceName.$error.required">{{'lbl_commonrequirederror' | translate }}</span>
+ 			<span class="required textrightallign" ng-show="detailsForm.referenceName.$error.pattern">{{'lbl_texterrormessage22' | translate }}</span>
+            <div class="field-row">
+              <label for="contactName"><span class="required"></span><span class="required">*</span>{{'lbl_contactname' | translate }}</label>
+              	<div class="column">
+              		<input type="text" name="contactName" ng-class="{ 'hasError': detailsForm.$submitted && detailsForm.contactName.$invalid }" ng-model="DetailInformation.referenceInfo.contactName" ng-pattern="/^[A-Za-z\d\s]+$/" maxlength="100" required/>
+            	</div>
+            </div>
+			<div class="clearfix"></div>
+            <span class="required textrightallign"  ng-show="detailsForm.$submitted && detailsForm.contactName.$error.required">{{'lbl_commonrequirederror' | translate }}</span>
+ 			<span class="required textrightallign" ng-show="detailsForm.contactName.$error.pattern">{{'lbl_texterrormessage22' | translate }}</span>           
+            <div class="field-row">   
+            <label for="phone"><span class="required"></span> <span class="required">*</span>{{'lbl_phone' | translate }}</label>
+            <div class="column">
+              <input type="text" name="telephone1" ng-class="{ 'hasError': detailsForm.$submitted && detailsForm.telephone1.$invalid }" id="phone" ng-model="DetailInformation.referenceInfo.telephone" ng-pattern="/^\d{10}$|^\d{2}[-]\d{4}[-]\d{4}$|^\d{3}[-]\d{3}[-]\d{4}$/" placeholder="XXXXXXXXXX" maxlength="12" required/>
+            </div>            
+            </div>
+			<div class="clearfix"></div>
+            <span class="required textrightallign"  ng-show="detailsForm.$submitted && detailsForm.telephone1.$error.required">{{'lbl_commonrequirederror' | translate }}</span>
+ 			<span class="required textrightallign" ng-show="detailsForm.telephone1.$error.pattern">{{'lbl_texterrormessage8' | translate }}</span>
+      
+
+         </div>
+         <div class="clearfix"></div>
+        </div>
+
+
+		<div class="contentSection">
+      	<div class="col-md-12">
+            <h2>{{'lbl_refedeclaration' | translate }}:</h2>
+				<div class="field-row topPad10">
+                    <label role="option" class="checkbox terms-check" for="fancyCheck66">
+                        <input type="checkbox" value="" id="fancyCheck66" ng-model="DetailInformation.referenceInfo.referenceDeclaration">
+                        <i class="skin"></i>
+                        <span>{{'lbl_refedeclaration1' | translate }}</span>
+                     </label>
+
+                    <label role="option" class="checkbox terms-check" for="fancyCheck7">
+                        <input type="checkbox" value="" id="fancyCheck7" ng-model="details.vdscRequestBean.header.checkOnlineNextelBill">
+                        <i class="skin"></i>
+                        <span>{{'lbl_refedeclaration2' | translate }}</span>
+                     </label>
+
+                    <label role="option" class="checkbox terms-check" for="fancyCheck8">
+                        <input type="checkbox" value="" id="fancyCheck8" ng-model="details.vdscRequestBean.header.emailDisclaimer">
+                        <i class="skin"></i>
+                        <span>{{'lbl_refedeclaration3' | translate }}.</span>
+                     </label>
+
+				</div>
+            <div class="clearfix"></div>
+         </div>
+         <div class="clearfix"></div>
+        </div>
+
+
+	<div class="contentSection">
+      	<div class="col-md-12">
+            <h2><span class="required">*</span>{{'lbl_guarenteesbysubscriber' | translate }}:</h2>
+            <div class="field-row topPad10">
+              <label class="subLabel"></label>
+                  <div class="checkbox-holder">
+                      <div class="column">
+                        <label role="option" class="radio" for="fancyCheck9">
+                            <input name="cashDeposit" type="radio" value="Cash deposit" id="fancyCheck9" ng-model="details.vdscRequestBean.header.subscriberGuarantee" ng-checked="details.vdscRequestBean.header.subscriberGuarantee=='Cash deposit'"
+                            ng-class="{ 'hasError': detailsForm.$submitted && detailsForm.cashDeposit.$invalid }" required>
+                            <i class="skin"></i>
+                            <span>{{'lbl_cashdeposit' | translate }}</span>
+                         </label>
+                      </div>
+                      <div class="column">
+                        <label role="option" class="radio" for="fancyCheck10">
+                            <input name="bail" type="radio" value="Bail" id="fancyCheck10" ng-model="details.vdscRequestBean.header.subscriberGuarantee" ng-checked="details.vdscRequestBean.header.subscriberGuarantee=='Bail'"
+                            ng-class="{ 'hasError': detailsForm.$submitted && detailsForm.bail.$invalid }" required>
+                            <i class="skin"></i>
+                            <span>{{'lbl_bail' | translate }}</span>
+                         </label>
+                      </div>
+                      <div class="column">
+                        <label role="option" class="radio" for="fancyCheck11">
+                            <input name="promissory" type="radio" value="Promissory (corporate accounts only)" id="fancyCheck11" ng-model="details.vdscRequestBean.header.subscriberGuarantee" ng-checked="details.vdscRequestBean.header.subscriberGuarantee=='Promissory (corporate accounts only)'"
+                            ng-class="{ 'hasError': detailsForm.$submitted && detailsForm.promissory.$invalid }" required>
+                            <i class="skin"></i>
+                            <span>{{'lbl_promissory' | translate }}</span>
+                         </label>
+                      </div>
+                  </div>
+                  <span class="required textrightallign"  ng-show="detailsForm.$submitted && detailsForm.promissory.$error.required">{{'lbl_texterrormessage2' | translate }}</span>
+                  <label role="option" class="checkbox terms-check" for="fancyCheck89">
+                        <input type="checkbox" value="" id="fancyCheck89" ng-model="details.vdscRequestBean.header.monthlyChargeAcceptance">
+                        <i class="skin"></i>
+                        <span>{{'lbl_acceptance' | translate }}.</span>
+                     </label>
+            </div>
+
+            	<div class="clearfix"></div>
+
+         </div>
+         <div class="clearfix"></div>
+        </div>
+
+
+<div class="contentSection">
+      	<div class="col-md-12">
+            <h2>{{'lbl_authorizationrequest' | translate }}:</h2>
+
+            <div class="field-row topPad10">
+              <label>{{'lbl_authorizationdate' | translate }}</label>
+              <div class="column">
+                    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++ -->
+                       <!-- <span class="cssIcon-calendar">
+                          <button type="button" class="faux-input" onclick="$('#calendar4').trigger('click')" ng-model="DetailInformation.authorizeCreditReportRequest.authCreditInfo.authorizationDate"><span class="hidden-spoken">{{'lbl_doubletap' | translate}}.</span></button>
+                          <input id="calendar4" class="datepicker-input" value="09/08/2015" data-provide="datepicker" aria-describedby="datepicker" tabindex="-1" aria-hidden="true" readonly type="text" />
+                       </span> -->
+                       
+                       
+                       <span class="cssIcon-calendar">
+	            			<button type="button" class="faux-input" ng-click="open2()"></button>
+	            			<input type="text"  uib-datepicker-popup="{{format}}" ng-model="DetailInformation.authorizeCreditReportRequest.authCreditInfo.authorizationDate" is-open="popup2.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" 
+	            			close-text="Close" alt-input-formats="altInputFormats" readonly />
+            	 	   </span>
+                    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++ -->
+              </div>
+            </div>
+            <div class="clearfix"></div>
+
+            <div class="field-row topPad10">
+              <label for="companyName"><span class="required"></span>{{'lbl_custcompanyname' | translate }}</label>
+              <div class="column">
+                	<input type="text" name="companyName" ng-class="{  'hasError': (detailsForm.$submitted && detailsForm.companyName.$invalid) || (detailsForm.companyName.$error.pattern) }" ng-model="DetailInformation.authorizeCreditReportRequest.authCreditInfo.customerName" ng-pattern="alphaNumeric" maxlength="250"/>
+              </div>
+            </div>
+            <div class="clearfix"></div>
+            <span class="required textrightallign" ng-show="detailsForm.companyName.$error.pattern">{{'lbl_texterrormessage22' | translate }}</span>  
+            
+            <div class="clearfix"></div>
+		    <div class="field-row topPad10">
+              <label for="tin"><span class="required"></span>{{'lbl_tinn' | translate }}</label>
+              <div class="column">
+                	<input type="text" name="tin" ng-class="{ 'hasError': detailsForm.$submitted && detailsForm.tin.$error.pattern }" ng-model="DetailInformation.authorizeCreditReportRequest.authCreditInfo.tin" 
+                	ng-pattern="/^[a-zA-Z0-9-\s]*$/" maxlength="14"/>
+              </div>
+            </div>
+            <div class="clearfix"></div>
+            <span class="required textrightallign" ng-show="detailsForm.tin.$error.pattern">{{'lbl_texterrormessage22' | translate }}</span>
+
+            <div class="field-row topPad10">
+            <label for="address"><span class="required"></span>{{'lbl_addressnum' | translate }}{{'lbl_streetname' | translate }}</label>
+              <div class="column">
+                	<input type="text" name="address" ng-class="{ 'hasError': detailsForm.$submitted && detailsForm.address.$error.pattern }" ng-model="DetailInformation.authorizeCreditReportRequest.authAddress.addressLine1" ng-pattern="alphaNumeric" maxlength="250"/>
+              </div>
+            </div>
+            <div class="clearfix"></div>
+            <span class="required textrightallign" ng-show="detailsForm.address.$error.pattern ">{{'lbl_texterrormessage22' | translate }}</span>
+            <div class="clearfix"></div>
+			<div class="field-row margin-top-10">
+           			 <label for="authCity" class="required">{{'lbl_city' | translate }}</label>
+           			 <input type="text" id="authCity" name="authCity" ng-class="{ 'hasError': (detailsForm.$submitted && detailsForm.authCity.$error.pattern) || (detailsForm.authCity.$error.pattern) }" ng-pattern="alphaNumeric" maxlength="250" ng-model="DetailInformation.authorizeCreditReportRequest.authAddress.city"/> 
+         	 </div>
+         	 <div class="clearfix"></div>
+         	  <span class="required textrightallign" ng-show="detailsForm.authCity.$error.pattern">{{'lbl_texterrormessage22' | translate }}</span>
+         	 <div class="clearfix"></div>
+            <div class="field-row topPad10">
+              <label for="suburb"><span class="required"></span>{{'lbl_suburb' | translate }}</label>
+              <div class="column">
+                	<input type="text" name="suburb" ng-class="{ 'hasError': detailsForm.$submitted && detailsForm.suburb.$error.pattern }" ng-model="DetailInformation.authorizeCreditReportRequest.authAddress.suburb" ng-pattern="/^[A-Za-z\d\s]+$/" ng-maxlength="250"/>
+              </div>
+            </div>
+            <div class="clearfix"></div>
+            <span class="required textrightallign" ng-show="detailsForm.suburb.$error.maxlength">{{'lbl_texterrormessage1' | translate }}</span>
+            <span class="required textrightallign" ng-show="detailsForm.suburb.$error.pattern">{{'lbl_texterrormessage22' | translate }}</span>
+            <div class="field-row topPad10">
+              <label for="office"><span class="required"></span>{{'lbl_office' | translate }}</label>
+              <div class="column">
+                <input type="text" name="office" ng-class="{ 'hasError': detailsForm.$submitted && detailsForm.office.$error.pattern }" ng-model="DetailInformation.authorizeCreditReportRequest.authAddress.municipalOffice" ng-pattern="/^[A-Za-z\d\s]+$/" ng-maxlength="250"/>
+              </div>
+            </div>
+            <div class="clearfix"></div>
+            <span class="required textrightallign" ng-show="detailsForm.office.$error.maxlength">{{'lbl_texterrormessage1' | translate }}</span>
+            <span class="required textrightallign" ng-show="detailsForm.office.$error.pattern">{{'lbl_texterrormessage22' | translate }}</span>
+            
+            <div class="field-row topPad10">
+              <label>{{'lbl_state' | translate }}</label>
+              <div class="column">
+                    <select class="mod-select" id="phoneType1" style="width:auto;" ng-model="DetailInformation.authorizeCreditReportRequest.authAddress.state">
+                      <option value="" data-default-placeholder="true" selected="">{{'lbl_selectone' | translate }}</option>
+                        <option value="Aguascalientes">Aguascalientes</option>
+                      	<option value="Baja California">Baja California</option>
+						<option value="Baja California Sur">Baja California Sur</option>
+						<option value="Campeche">Campeche</option>
+						<option value="Chiapas">Chiapas</option>
+						<option value="Chihuahua">Chihuahua</option>
+						<option value="Coahuila de Zaragoza">Coahuila de Zaragoza</option>
+						<option value="Colima">Colima</option>
+						<option value="Durango">Durango</option>
+						<option value="Guanajuato">Guanajuato</option>
+						<option value="Guerrero">Guerrero</option>
+						<option value="Hidalgo">Hidalgo</option>
+						<option value="Jalisco">Jalisco</option>
+						<option value="Mexico">Mexico</option>
+						<option value="Ciudad de Mexico">Ciudad de Mexico</option>
+						<option value="Michoacan de Ocampo">Michoacan de Ocampo</option>
+						<option value="Morelos">Morelos</option>
+						<option value="Nayarit">Nayarit</option>
+						<option value="Nuevo Leon">Nuevo Leon</option>
+						<option value="Oaxaca">Oaxaca</option>
+						<option value="Puebla">Puebla</option>
+						<option value="Queretaro de Arteaga">Queretaro de Arteaga</option>
+						<option value="Quintana Roo">Quintana Roo</option>
+						<option value="San Luis Potosi">San Luis Potosi</option>
+						<option value="Sinaloa">Sinaloa</option>
+						<option value="Sonora">Sonora</option>
+						<option value="Tabasco">Tabasco</option>
+						<option value="Tamaulipas">Tamaulipas</option>
+						<option value="Tlaxcala">Tlaxcala</option>
+						<option value="Veracruz">Veracruz</option>
+						<option value="Yucatan">Yucatan</option>
+						<option value="Zacatecas">Zacatecas</option>
+                      
+                    </select>
+              </div>
+            </div>
+            <div class="clearfix"></div>
+
+            <div class="field-row topPad10">
+            <label for="zip"><span class="required"></span> {{'lbl_zipcode' | translate}}</label>
+    			<div class="column">
+      				<input type="text" name="zip" ng-class="{ 'hasError': detailsForm.$submitted && detailsForm.zip.$error.pattern }" ng-model="DetailInformation.authorizeCreditReportRequest.authAddress.zip" ng-pattern=" /^\d{5}(?:[-\s]\d{4})?$/" maxlength="20"/>
+     			</div>   
+            </div>
+             
+            <div class="clearfix"></div>
+            <span class="required textrightallign" ng-show="detailsForm.zip.$error.pattern">{{'lbl_texterrormessage13' | translate }}</span>  
+            
+
+             <div class="field-row margin-top-10">
+              <label for="phone"><span class="required"></span> {{'lbl_phone' | translate }}</label>
+              <input type="text" name="telephone" ng-class="{ 'hasError': detailsForm.$submitted && detailsForm.telephone.$error.pattern }" ng-model="DetailInformation.authorizeCreditReportRequest.authCreditInfo.phoneNumber" ng-pattern="/^\d{10}$|^\d{2}[-]\d{4}[-]\d{4}$|^\d{3}[-]\d{3}[-]\d{4}$/" placeholder="XXXXXXXXXX" maxlength="12"/>
+            </div>
+            <span class="required textrightallign" ng-show="detailsForm.telephone.$error.pattern">{{'lbl_texterrormessage8' | translate }}</span>  
+
+         </div>
+         <div class="clearfix"></div>
+        </div>
+
+		<div class="contentSection">
+      	<div class="col-md-12">
+            <h2>{{'lbl_consenttosend' | translate}}</h2>
+
+            <div class="field-row topPad10">
+                 <label for="fancyCheck144" class="checkbox terms-check" role="option">
+					<input type="checkbox" id="fancyCheck144" value="" ng-model="details.vdscRequestBean.header.advertisingDisclaimer">
+					<i class="skin"></i>
+					<span>{{'lbl_consentdescription' | translate}}</span>
+                 </label>
+            </div>
+			<div class="clearfix"></div>
+
+         </div>
+         <div class="clearfix"></div>
+        </div>
+
+		<div class="contentSection">
+      	<div class="col-md-12">
+            <h2>{{'lbl_termsconditions' | translate}}</h2>
+
+            <div class="field-row topPad10">
+                 <label for="fancyCheck14" class="checkbox terms-check" role="option">
+					<input type="checkbox" name="termAndCondition" id="fancyCheck14" ng-model="tacAcceptance" required
+					ng-class="{ 'hasError': detailsForm.$submitted && detailsForm.termAndCondition.$invalid }">
+					<i class="skin"></i><span class="required">*</span>
+					<span>{{'lbl_subscribercontent' | translate}}</span>
+                 </label>
+            </div>
+            <div class="clearfix"></div>
+             <span class="required textallignbottom"  ng-show="detailsForm.$submitted && detailsForm.termAndCondition.$error.required">{{'lbl_texterrormessage20' | translate }}</span>
+            <div class="field-row topPad10">
+                 <label for="fancyCheck145" class="checkbox terms-check" role="option">
+					<input type="checkbox" id="fancyCheck145" name="customerSign" ng-model="details.vdscRequestBean.header.customerSignature" required
+					ng-class="{ 'hasError': detailsForm.$submitted && detailsForm.customerSign.$invalid }">
+					<i class="skin"></i><span class="required">*</span>
+					<span>{{'lbl_customersignature' | translate}}</span>
+                 </label>
+            </div>
+            <div class="clearfix"></div>
+            <span class="required textallignbottom"  ng-show="detailsForm.$submitted && detailsForm.customerSign.$error.required">{{'lbl_texterrormessage18' | translate }}</span>
+            <div class="field-row topPad10">
+        		 <label for="email"><span class="required">*</span> {{'lbl_subscriberemail' | translate }}</label>
+    				<div class="column">
+      				<input type="text" name="email" ng-class="{ 'hasError': detailsForm.$submitted && detailsForm.email.$invalid}" ng-model="details.vdscRequestBean.customerInfo.customer.emailAddress" 
+      				ng-pattern=" /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i" maxlength="100" required/>
+     				</div>   
+			</div> 
+			<div class="clearfix"></div>
+			 <span class="required textrightallign"  ng-show="detailsForm.$submitted && detailsForm.email.$error.required">{{'lbl_commonrequirederror' | translate }}</span>
+ 			<span class="required textrightallign" ng-show="detailsForm.email.$error.pattern">{{'lbl_texterrormessage19' | translate }}</span>  
+              
+           <!--  <div class="field-row topPad10">
+              <label>{{'lbl_subscriberemail' | translate }}</label>
+              <div class="column">
+                	<input type="text"  class="short" ng-model="details.vdscRequestBean.customerInfo.customer.emailAddress"/>
+              </div>
+              
+            </div> -->
+
+         </div>
+         <div class="clearfix"></div>
+        </div>
+        
+        
+
+<div class="contentSection">
+            <h2>{{'lbl_notes' | translate }} : </h2>
+            <!--p>Please provide any other information that can help our technicians serve you better (for example, access codes for secured apartment buildings).</p-->
+            <div class="field-row">
+              <label class="linstallLabel">&nbsp; <!--(Limit to 250 characters)--></label>
+              <div class="column">
+              	<textarea class="installInfo" ng-model="details.vdscRequestBean.header.notes" maxlength="500"></textarea>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+          </div>
+          <div class="clearfix"></div>
+
+
+
+          <div class="nav clearfix mobilePadLR20" id="footerButton">
+          	<button type="submit" class="button-primary button-small blueButton" id="continue1" ng-click="submitDetailInfo()" ng-disabled="isDisabled">{{'lbl_submitorder' | translate }}</button>
+			<button type="button" class="button-secondary button-small blueButton" id="back" ng-click="returnStep2()">{{'lbl_back' | translate}}</button>
+          </div>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+  </div>
+
+  </form>
+
+  <!-- End Wrapper -->
+ 
+</div>
+ <footer-container></footer-container>
+</div>

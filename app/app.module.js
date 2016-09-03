@@ -16,6 +16,10 @@
    with the home, numbers and example1 directories.
 */
         'myApp.login',
+        'myApp.step1',
+        'myApp.step2',
+        'myApp.step3',
+        'myApp.success',
         'LocalStorageModule'
     ]);
 })();

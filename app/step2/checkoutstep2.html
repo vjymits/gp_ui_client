@@ -1,0 +1,898 @@
+<header-container></header-container>
+<div class="container">
+<div class="mainError errors" id="formErrors" ng-if="formInvalid == 1"><ul><li class="error">{{'lbl_errormessage' | translate }}</li></ul></div>
+  <div id="wrapper">
+  
+    <div class="frame-container eligibleMessage">
+     <div class="frame-content">
+        <div class="grandTitle visible-desktop visible-tablet">
+          <h1 class="pull-left">{{'lbl_vdsccheckout' | translate }}</h1>
+          <div class="pull-right faqIcon"><a  data-toggle="modal" role="button" data-target="#faqModal" href=""><img src="img/faq_icon.png" class="pull-left"/> {{'lbl_frequentque' | translate }}</a></div>
+        </div>
+      </div>
+      <form name="subscriberInfoForm" id="subscriberInfoForm" novalidate>
+      <div class="content">
+        <div class="contentSection">
+          <div class="step-wrapper" data-bubble-quantity="3">
+            <ol class="step-indicator" role="progressbar" aria-valuetext="">
+              <li class="step step-done" aria-hidden="true"></li>
+              <li class="step step-on" aria-hidden="true"></li>
+              <li class="step" aria-hidden="true"></li>
+            </ol>
+            <h1 class="step-label"> {{'lbl_checkout2' | translate }}:
+              <div class="step-description">{{'lbl_subscriberinfo' | translate }}</div>
+            </h1>
+          </div>
+           <!-- <p>{{'lbl_subscriberdescription' | translate }}</p>-->
+          <!-- <span class="required" ng-if="formInvalid == 1"> {{'lbl_errormessage' | translate }} </span> -->          
+          <div class="requiredFields1"><span class="required">*</span>{{'lbl_requiredfields' | translate }}</div>
+          <uib-accordion close-others="true">			 
+			 <uib-accordion-group heading="{{'lbl_typeofengg' | translate }}:" is-open="true">      
+            
+              <div class="field-row margin-top-10">
+              <label for="customerType" class=""><span class="required">*</span>{{'lbl_custtype' | translate }}</label>
+              <div class="column">               
+                <select style="width: 200px;" class="mod-select span4 required" id="customerType" name="customerType" ng-class="{ 'hasError': subscriberInfoForm.$submitted && subscriberInfoForm.customerType.$invalid }" title="Customer Type" data-required="true" ng-model="subscriber.vdscRequestBean.header.customerType" required>
+                     <option value="" data-default-placeholder="true" selected="">{{'lbl_selectone' | translate }}</option> 
+                     <option value="New">{{'New' | translate }}</option>
+                     <option value="Add_A_Line">{{'Add A Line' | translate }}</option>
+                     <option value="Sub_Account">{{'Sub Account' | translate }}</option>
+                     <option value="Upgrade">{{'Upgrade' | translate }}</option>                                     
+                  </select>                              
+                  <span class="required" ng-show="subscriberInfoForm.$submitted && subscriberInfoForm.customerType.$error.required">{{'lbl_texterrormessage2' | translate }}</span> 
+              </div>      
+            </div>   
+            <div class="field-row margin-top-10">
+              <label for="carrier" class=""><span class="required">*</span>{{'lbl_carrier' | translate}}</label>
+               <div class="span12" style="margin-left:0px; width:auto;">
+               <div class="form-row">
+                  <select style="width: 130px;" class="mod-select span4 required" id="carrier" name="carrier" ng-class="{ 'hasError': subscriberInfoForm.$submitted && subscriberInfoForm.carrier.$invalid }" title="Carrier" data-required="true" ng-model="subscriber.vdscRequestBean.header.carrier" required>
+                     <option value="" data-default-placeholder="true" selected="">{{'lbl_selectone' | translate }}</option>    
+                      <option value="Nextel">{{'Nextel' | translate }}</option>
+                      <option value="IUSACELL">{{'IUSACELL' | translate }}</option>
+                      <option value="ATT">{{'ATT' | translate }}</option>
+                  </select> 
+                  <span class="required" ng-show="subscriberInfoForm.$submitted && subscriberInfoForm.carrier.$error.required">{{'lbl_texterrormessage2' | translate }}</span>                               
+               </div>             
+            </div>                                     
+            </div>      
+         <div class="field-row margin-top-10">
+              <label for="orderType" class=""><span class="required">*</span>{{'lbl_ordertype' | translate }}</label>              
+             <div class="span12" style="margin-left:0px; width:auto;">
+               <div class="form-row">
+                  <select style="width: 150px;" class="mod-select span4 required" id="orderType" name="orderType" ng-class="{ 'hasError': subscriberInfoForm.$submitted && subscriberInfoForm.orderType.$invalid }" title="OrderType" data-required="true" ng-model="subscriber.vdscRequestBean.header.orderType" required>
+                      <option value="" data-default-placeholder="true" selected="">{{'lbl_selectone' | translate }}</option>
+                      <option value="Personal">{{'Personal' | translate }}</option>
+                      <option value="Business">{{'Business' | translate }}</option>
+                      <option value="Government">{{'Government' | translate }}</option>                   
+                  </select>             
+                  <span class="required" ng-show="subscriberInfoForm.$submitted && subscriberInfoForm.orderType.$error.required">{{'lbl_texterrormessage2' | translate }}</span>                   
+               </div>             
+            </div>            
+         </div>                      
+            <div class="clearfix"></div>
+          
+          </uib-accordion-group>
+          </uib-accordion>
+		  <div class="clearfix"></div>
+          
+          <uib-accordion close-others="true">			 
+			<uib-accordion-group heading="{{'lbl_planequipment' | translate }}:" is-open="true">            
+            
+            <div class="field-row topPad10">
+			<label><span class="required"></span> {{'lbl_minimumterm' | translate }}</label>
+              <label><span class="required">*</span> {{'lbl_required' | translate }}</label>
+                  <div class="checkbox-holder">
+                      <div class="column">
+                        <label for="minimumTermY" class="radio" role="option">
+                            <input type="radio" id="minimumTermY" name="minimumTermY" value="true" ng-model="subscriber.vdscRequestBean.products.ratePlan[0].minTermForced" ng-checked="subscriber.vdscRequestBean.products.ratePlan[0].minTermForced=='true'" 
+                            required ng-class="{ 'hasError': subscriberInfoForm.$submitted && subscriberInfoForm.minimumTermY.$invalid }">
+                            <i class="skin"></i>
+                            <span>{{'lbl_yes' | translate }}</span>
+                         </label>
+                      </div>
+                      <div class="column">
+                        <label for="minimumTermN" class="radio" role="option">
+                            <input type="radio" id="minimumTermN" name="minimumTermN" value="false" ng-model="subscriber.vdscRequestBean.products.ratePlan[0].minTermForced" ng-checked="subscriber.vdscRequestBean.products.ratePlan[0].minTermForced=='false'" 
+                            required ng-class="{ 'hasError': subscriberInfoForm.$submitted && subscriberInfoForm.minimumTermN.$invalid }">
+                            <i class="skin"></i>
+                            <span>{{'lbl_no' | translate }}</span>
+                         </label>
+                      </div>
+
+                  </div>
+            </div>
+            <div class="clearfix"></div>
+            <span class="required textrightallign" ng-show="subscriberInfoForm.$submitted && subscriberInfoForm.minimumTermY.$error.required">{{'lbl_texterrormessage2' | translate }}</span>              
+            
+            
+             <div class="clearfix"></div>
+            
+            
+              <div class="field-row margin-top-10">
+              <label for="month" class=""><span class="required">*</span> {{'lbl_months' | translate }}</label>
+              <div class="column">               
+                <select style="width: 120px;" class="mod-select span4 required" id="months" name="months" ng-class="{ 'hasError': subscriberInfoForm.$submitted && subscriberInfoForm.months.$invalid }" title="Customer Type" data-required="true" ng-model="subscriber.vdscRequestBean.products.ratePlan[0].minTermLength" required>
+                     <option value="" data-default-placeholder="true" selected="">{{'lbl_selectone' | translate }}</option> 
+                     <option value="6">6</option>
+                     <option value="12">12</option>
+                     <option value="18">18</option>
+                     <option value="24">24</option>                                         
+                  </select>  
+                   <span class="required" ng-show="subscriberInfoForm.$submitted && subscriberInfoForm.months.$error.required">{{'lbl_texterrormessage2' | translate }}</span>              
+              </div>
+            </div>   
+            <div class="clearfix"></div>
+            <div class="field-row">
+              <label><span class="required">*</span> {{'lbl_estimateddateofrenewal' | translate }}<br/>{{'lbl_estimateddateofrenewal1' | translate }}</label>
+              <div class="column margin-right-10">
+                <!-- <span class="selectWrap"> -->
+				<select ng-change="monthSelection()" style="width: 120px;" id="renewal_month" class="mod-select span4 required" ng-class="{ 'hasError': subscriberInfoForm.$submitted && subscriberInfoForm.estimatedMonth.$invalid }" data-required="true" name="estimatedMonth" ng-model="estimated.month" required>
+                  <option value="" data-default-placeholder="true" selected="">{{'lbl_month' | translate }}</option>
+                  <option ng-repeat="month in monthList" ng-disabled="month.disabled">{{ month.name }}</option>
+                </select>
+               <span class="required" ng-show="subscriberInfoForm.$submitted && subscriberInfoForm.estimatedMonth.$invalid">{{'lbl_texterrormessage6' | translate }}</span>		
+              </div>  
+                
+              <div class="column">  
+                <span class="selectWrap"><select ng-change="yearSelection()" id="renewal_year" style="width:90px" class="mod-select span4 required" ng-class="{ 'hasError': subscriberInfoForm.$submitted && subscriberInfoForm.estimatedYear.$invalid }" name="estimatedYear" data-required="true" ng-model="estimated.year" required>
+                  <option value="" data-default-placeholder="true" selected="">{{'lbl_year' | translate }}</option>
+                  <option ng-repeat="year in yearList" ng-disabled="year.disabled">{{year.name}}</option>
+                </select></span>
+                <span class="required" ng-show="subscriberInfoForm.$submitted && subscriberInfoForm.estimatedYear.$error.required">{{'lbl_texterrormessage7' | translate }}</span>				
+                <div class="clearfix"></div>                         
+              </div>
+            </div>
+            <div class="clearfix"></div>
+            <h2 class="marT30">{{'lbl_servicecontract' | translate }}:</h2>
+            <div class="field-row margin-top-10">
+              <label for="units" class=""><span class="required">*</span> {{'lbl_units' | translate }}</label>
+              <input type="text" value="" name="runits" ng-class="{ 'hasError': (subscriberInfoForm.$submitted && subscriberInfoForm.runits.$invalid) || (subscriberInfoForm.runits.$error.pattern)}"  ng-pattern="numericPattern" id="units" maxlength="10" ng-model="subscriber.vdscRequestBean.products.ratePlan[0].units" required/>
+           </div>           
+            <span class="required textrightallign"  ng-show="subscriberInfoForm.$submitted && subscriberInfoForm.runits.$error.required">{{'lbl_commonrequirederror' | translate }}</span>
+ 			<span class="required textrightallign" ng-show="subscriberInfoForm.runits.$error.pattern">{{'lbl_texterrormessage8' | translate }}</span>
+            <div class="clearfix"></div>
+            <div class="field-row margin-top-10">
+              <label for="tariffPlan" class=""><span class="required">*</span> {{'lbl_tariffplan' | translate }}</label>
+              <input type="text" value="" id="tariffPlan" name="tariffPlan" ng-class="{ 'hasError': (subscriberInfoForm.$submitted && subscriberInfoForm.tariffPlan.$invalid ) || (subscriberInfoForm.tariffPlan.$error.pattern) }" ng-pattern="alphanumericPattern" maxlength="250" ng-model="subscriber.vdscRequestBean.products.ratePlan[0].planType" required/>  
+            </div>          
+            <span class="required textrightallign" ng-show="subscriberInfoForm.$submitted && subscriberInfoForm.tariffPlan.$error.required">{{'lbl_commonrequirederror' | translate }}</span>
+ 			<span class="required textrightallign" ng-show="subscriberInfoForm.tariffPlan.$error.pattern">{{'lbl_texterrormessage22' | translate }}</span>
+            <div class="clearfix"></div>
+            <div class="field-row margin-top-10">
+              <label for="features" class="">{{'lbl_feature' | translate }}</label>
+              <input type="text" value="" id="features" name="features" ng-class="{ 'hasError': (subscriberInfoForm.$submitted && subscriberInfoForm.features.$invalid) || (subscriberInfoForm.features.$error.pattern)}" ng-pattern="alphanumericPattern" maxlength="250" ng-model="subscriber.vdscRequestBean.products.ratePlan[0].features" />
+            </div> 
+ 			<span class="required textrightallign" ng-show="subscriberInfoForm.features.$error.pattern">{{'lbl_texterrormessage22' | translate }}</span>
+            <div class="clearfix"></div>
+            <div class="field-row margin-top-10">
+              <label for="priceperUnit" class=""><span class="required">*</span> {{'lbl_price' | translate }}</label>
+              <input type="text" value="" id="priceperUnit" name="priceperUnit" ng-class="{ 'hasError': (subscriberInfoForm.$submitted && subscriberInfoForm.priceperUnit.$invalid ) || (subscriberInfoForm.priceperUnit.$error.pattern)}" ng-pattern="pricePattern" maxlength="20" ng-model="subscriber.vdscRequestBean.products.ratePlan[0].unitPrice" required/>
+            </div>         
+            <span class="required textrightallign" ng-show="subscriberInfoForm.$submitted && subscriberInfoForm.priceperUnit.$error.required">{{'lbl_commonrequirederror' | translate }}</span>
+ 			<span class="required textrightallign" ng-show="subscriberInfoForm.priceperUnit.$error.pattern">{{'lbl_texterrormessage9' | translate }}</span>
+            <div class="clearfix"></div>
+            <div class="field-row margin-top-10">
+              <label for="totalIncluding" class=""><span class="required">*</span> {{'lbl_totalincludingiva' | translate }}</label>
+              <input type="text" value="" id="totalIncluding" name="totalIncluding" ng-class="{ 'hasError': (subscriberInfoForm.$submitted && subscriberInfoForm.totalIncluding.$invalid ) || (subscriberInfoForm.totalIncluding.$error.pattern) }" ng-pattern="pricePattern" maxlength="20" ng-model="subscriber.vdscRequestBean.products.ratePlan[0].totalPriceIvaIncluded" required/>
+            </div> 
+          	<span class="required textrightallign" ng-show="subscriberInfoForm.$submitted && subscriberInfoForm.totalIncluding.$error.required">{{'lbl_commonrequirederror' | translate }}</span>
+ 			<span class="required textrightallign" ng-show="subscriberInfoForm.totalIncluding.$error.pattern">{{'lbl_texterrormessage9' | translate }}</span>
+ 			<h2 class="marT30">{{'lbl_equipment' | translate }}:</h2>
+            <div class="field-row margin-top-10">
+              <label for="equUnits" class=""><span class="required">*</span> {{'lbl_units' | translate }}</label>
+              <input type="text" value="" id="equUnits" name="equUnits" ng-class="{ 'hasError': (subscriberInfoForm.$submitted && subscriberInfoForm.equUnits.$invalid ) || (subscriberInfoForm.equUnits.$error.pattern)}" ng-pattern="numericPattern" maxlength="10" ng-model="subscriber.vdscRequestBean.products.equipment[0].deviceInfo.units" required/>
+            </div>
+            <span class="required textrightallign" ng-show="subscriberInfoForm.$submitted && subscriberInfoForm.equUnits.$error.required">{{'lbl_commonrequirederror' | translate }}</span>
+ 			<span class="required textrightallign" ng-show="subscriberInfoForm.equUnits.$error.pattern">{{'lbl_texterrormessage8' | translate }}</span>
+           <div class="clearfix"></div>
+            <div class="field-row margin-top-10">
+              <label for="description" class=""><span class="required">*</span> {{'lbl_description' | translate }}</label>
+              <input type="text" value="" id="description" name="description" ng-class="{ 'hasError': (subscriberInfoForm.$submitted && subscriberInfoForm.description.$invalid) ||  (subscriberInfoForm.description.$error.pattern) }" ng-pattern="alphanumericPattern" maxlength="250" ng-model="subscriber.vdscRequestBean.products.equipment[0].deviceInfo.description" required/>
+            </div>
+            <span class="required textrightallign" ng-show="subscriberInfoForm.$submitted && subscriberInfoForm.description.$error.required">{{'lbl_commonrequirederror' | translate }}</span>
+ 			<span class="required textrightallign" ng-show="subscriberInfoForm.description.$error.pattern">{{'lbl_texterrormessage22' | translate }}</span>
+            <div class="clearfix"></div>
+            <div class="field-row margin-top-10 checkboxRow">
+              <label for="equFeatures" class="">{{'lbl_feature' | translate }}</label>
+              <input type="text" value="" id="equFeatures" name="equFeatures" ng-class="{ 'hasError': (subscriberInfoForm.$submitted && subscriberInfoForm.equFeatures.$invalid) || (subscriberInfoForm.equFeatures.$error.pattern) }" ng-pattern="alphanumericPattern" maxlength="250" ng-model="subscriber.vdscRequestBean.products.equipment[0].deviceInfo.features" />
+           </div>
+ 			<span class="required textrightallign" ng-show="subscriberInfoForm.equFeatures.$error.pattern">{{'lbl_texterrormessage22' | translate }}</span>
+          	<div class="clearfix"></div>
+            <div class="field-row margin-top-10">
+              <label for="key" class=""><span class="required">*</span> {{'lbl_key' | translate }}</label>
+              <input type="text" value="" id="key" name="key" ng-class="{ 'hasError': (subscriberInfoForm.$submitted && subscriberInfoForm.key.$invalid ) || (subscriberInfoForm.key.$error.pattern) }" ng-pattern="alphanumericPattern" maxlength="250" ng-model="subscriber.vdscRequestBean.products.equipment[0].deviceInfo.deviceKey" required/>
+            </div> 
+            <span class="required textrightallign" ng-show="subscriberInfoForm.$submitted && subscriberInfoForm.key.$error.required ">{{'lbl_commonrequirederror' | translate }}</span>
+ 			<span class="required textrightallign" ng-show="subscriberInfoForm.key.$error.pattern">{{'lbl_texterrormessage22' | translate }}</span>            
+            <div class="clearfix"></div>
+            <div class="field-row margin-top-10">
+              <label for="unitPrice" class=""><span class="required">*</span> {{'lbl_unitprice/mpe' | translate }}</label>
+              <input type="text" value="" id="unitPrice" name="unitPrice" ng-class="{ 'hasError': (subscriberInfoForm.$submitted && subscriberInfoForm.unitPrice.$invalid) || (subscriberInfoForm.unitPrice.$error.pattern) }" ng-pattern="pricePattern" maxlength="20" ng-model="subscriber.vdscRequestBean.products.equipment[0].deviceInfo.unitPriceMpe" required/>
+            </div>
+            <span class="required textrightallign" ng-show="subscriberInfoForm.$submitted && subscriberInfoForm.unitPrice.$error.required ">{{'lbl_commonrequirederror' | translate }}</span>
+ 			<span class="required textrightallign" ng-show="subscriberInfoForm.unitPrice.$error.pattern">{{'lbl_texterrormessage9' | translate }}</span>
+           	<div class="clearfix"></div>
+            <div class="field-row margin-top-10">
+              <label for="totalVAT" class=""><span class="required">*</span> {{'lbl_totalvatincluded' | translate }}</label>
+              <input type="text" value="" id="totalVAT" name="totalVAT" ng-class="{ 'hasError': (subscriberInfoForm.$submitted && subscriberInfoForm.totalVAT.$invalid) || (subscriberInfoForm.totalVAT.$error.pattern) }" ng-pattern="pricePattern" maxlength="20" ng-model="subscriber.vdscRequestBean.products.equipment[0].deviceInfo.totalPriceIvaIncluded" required/>
+            </div> 
+            <span class="required textrightallign" ng-show="subscriberInfoForm.$submitted && subscriberInfoForm.totalVAT.$error.required ">{{'lbl_commonrequirederror' | translate }}</span>
+ 			<span class="required textrightallign" ng-show="subscriberInfoForm.totalVAT.$error.pattern">{{'lbl_texterrormessage9' | translate }}</span>
+            </uib-accordion-group>
+          </uib-accordion>       
+          <div class="clearfix"></div>       
+          <uib-accordion close-others="true">			 
+		    <uib-accordion-group heading="{{'lbl_subscriberdata' | translate }}:" is-open="true">
+            <div class="field-row margin-top-10">
+              <label for="folioNo" class="">{{'lbl_businessname' | translate }}</label>              
+              <input type="text" id="folioNo" name ="businessName" ng-class="{ 'hasError': (subscriberInfoForm.$submitted && subscriberInfoForm.businessName.$invalid) || (subscriberInfoForm.businessName.$error.pattern) }" ng-model="customerInfo.customer.businessName" ng-pattern="alphanumericPattern" maxlength="250"/>
+            </div>
+            <div class="clearfix"></div>
+            <span style="padding-left:200px;" class="required textrightallign" ng-show="subscriberInfoForm.businessName.$error.pattern">{{'lbl_texterrormessage22' | translate }}</span>           
+            <div class="field-row margin-top-10">
+              <label for="folio" class=""><span class="required">*</span>{{'lbl_firstName' | translate }}</label>             
+              <input type="text" id="folio" name ="firstName" ng-class="{ 'hasError': (subscriberInfoForm.$submitted && subscriberInfoForm.firstName.$invalid ) || (subscriberInfoForm.firstName.$error.pattern) }" ng-pattern="alphanumericPattern" maxlength="250"  ng-model="customerInfo.customer.firstName" required/>            
+            </div>      
+            <span class="required textrightallign" ng-show="subscriberInfoForm.$submitted && subscriberInfoForm.firstName.$error.required ">{{'lbl_commonrequirederror' | translate }}</span>
+ 			<span class="required textrightallign" ng-show="subscriberInfoForm.firstName.$error.pattern">{{'lbl_texterrormessage22' | translate }}</span>
+ 			<div class="field-row margin-top-10">
+              <label for="folio" class=""><span class="required">*</span>{{'lbl_paternalName' | translate }}</label>             
+              <input type="text" id="folio" name ="paternalName" ng-class="{ 'hasError': (subscriberInfoForm.$submitted && subscriberInfoForm.paternalName.$invalid ) || (subscriberInfoForm.paternalName.$error.pattern) }" ng-pattern="alphanumericPattern" maxlength="250"  ng-model="customerInfo.customer.paternalName" required/>            
+            </div>      
+            <span class="required textrightallign" ng-show="subscriberInfoForm.$submitted && subscriberInfoForm.paternalName.$error.required ">{{'lbl_commonrequirederror' | translate }}</span>
+ 			<span class="required textrightallign" ng-show="subscriberInfoForm.paternalName.$error.pattern">{{'lbl_texterrormessage22' | translate }}</span>
+ 			<div class="field-row margin-top-10">
+              <label for="folio" class=""><span class="required">*</span>{{'lbl_maternalName' | translate }}</label>             
+              <input type="text" id="folio" name ="maternalName" ng-class="{ 'hasError': (subscriberInfoForm.$submitted && subscriberInfoForm.maternalName.$invalid ) || (subscriberInfoForm.maternalName.$error.pattern) }" ng-pattern="alphanumericPattern" maxlength="250"  ng-model="customerInfo.customer.maternalName" required/>            
+            </div>      
+            <span class="required textrightallign" ng-show="subscriberInfoForm.$submitted && subscriberInfoForm.maternalName.$error.required ">{{'lbl_commonrequirederror' | translate }}</span>
+ 			<span class="required textrightallign" ng-show="subscriberInfoForm.maternalName.$error.pattern">{{'lbl_texterrormessage22' | translate }}</span>
+            <div class="field-row margin-top-10">
+              <label for="folio" class=""><span class="required">*</span>{{'lbl_tin' | translate }}</label>              
+              <input type="text" id="folio" name="rfc" ng-class="{ 'hasError': (subscriberInfoForm.$submitted && subscriberInfoForm.rfc.$invalid) || (subscriberInfoForm.rfc.$error.pattern) }" ng-pattern="alphanumericWithHyphenPattern" maxlength="14" ng-model="customerInfo.customer.rfc" required/>                                   
+            </div> 
+            <div class="clearfix"></div>
+            <span class="required textrightallign" ng-show="subscriberInfoForm.$submitted && subscriberInfoForm.rfc.$error.required ">{{'lbl_commonrequirederror' | translate }}</span>
+ 			<span class="required textrightallign" ng-show="subscriberInfoForm.rfc.$error.pattern">{{'lbl_texterrormessage22' | translate }}</span>
+            <div class="clearfix"></div>
+            <div class="field-row margin-top-10">
+              <label for="appDate" class="">{{'lbl_legalrep' | translate }}</label>
+              <input type="text" value="" id="legalRep" name="legalRep" ng-class="{ 'hasError': (subscriberInfoForm.$submitted && subscriberInfoForm.legalRep.$invalid) || (subscriberInfoForm.legalRep.$error.pattern)  }" ng-pattern="alphanumericPattern" maxlength="250" ng-model="customerInfo.customer.legalRepresentative" />
+            </div>
+           <span class="required textrightallign" ng-show="subscriberInfoForm.legalRep.$error.pattern">{{'lbl_texterrormessage22' | translate }}</span>
+           <div class="field-row margin-top-10">
+                <label for="legalRepPhone" class=""><span class="required">*</span>{{'lbl_legal_phone' | translate }}</label>                
+                <input type="text" value="" id="legalRepPhone" name="legalRepPhone" ng-class="{'hasError': (subscriberInfoForm.$submitted && subscriberInfoForm.legalRepPhone.$invalid) || (subscriberInfoForm.legalRepPhone.$error.pattern)}" ng-pattern="phonePattern" minlength="10" maxlength="12" placeholder="XXXXXXXXXX" ng-model="customerInfo.customer.legalRepPhone" required/>
+            </div> 
+            <span class="required" ng-show="subscriberInfoForm.$submitted && subscriberInfoForm.legalRepPhone.$error.required ">{{'lbl_commonrequirederror' | translate }}</span>
+ 			<span class="required" ng-show="subscriberInfoForm.legalRepPhone.$error.pattern">{{'lbl_texterrormessage8' | translate }}</span>
+
+		   <div class="field-row margin-top-10">
+              <label for="repKey" class=""><span class="required">*</span>{{'lbl_nationality' | translate }}</label>
+              <input type="text" value="" id="repKey" name="nationality" ng-class="{ 'hasError': (subscriberInfoForm.$submitted && subscriberInfoForm.nationality.$invalid) || (subscriberInfoForm.nationality.$error.pattern)}" ng-pattern="alphanumericPattern" maxlength="250" ng-model="customerInfo.customer.nationality" required/>           
+            </div>          
+            <span class="required textrightallign" ng-show="subscriberInfoForm.$submitted && subscriberInfoForm.nationality.$error.required ">{{'lbl_commonrequirederror' | translate }}</span>
+ 			<span class="required textrightallign" ng-show="subscriberInfoForm.nationality.$error.pattern">{{'lbl_texterrormessage22' | translate }}</span>
+            			
+            <h2 class="marT30"><span class="required">*</span> {{'lbl_adresstype' | translate }}:</h2>
+            <div class="clearfix"></div>
+            <div class="field-row">
+                             <label></label>
+              <div class="column">
+              <input type="hidden" ng-model="customerInfo.customer.addressType">
+                <label for="Business" class="checkbox" role="option">
+                  <input id="Business" value="Business" type="checkbox" ng-click="addressSelection('Business')" ng-model="addressTypeInit.businessCheck" name="addressBusiness" ng-class="{ 'hasError': subscriberInfoForm.$submitted  && selectAtleastOneAddressType}">
+                  <i class="skin"></i> <span>{{'lbl_businessadd' | translate }}</span> </label>
+              </div>
+               <div class="column">
+                <label for="Mail" class="checkbox" role="option">
+                  <input id="Mail" value="Mail" type="checkbox" ng-click="addressSelection('Mail')"  ng-model="addressTypeInit.mailCheck" name="addressMail" ng-class="{ 'hasError': subscriberInfoForm.$submitted && selectAtleastOneAddressType }">
+                  <i class="skin"></i> <span>{{'lbl_mail' | translate }}</span> </label>
+              </div>
+            </div>
+            <div class="clearfix"></div>
+            <span class="required textrightallign" ng-show="subscriberInfoForm.$submitted && selectAtleastOneAddressType && subscriberInfoForm.$error">{{'lbl_texterrormessage11' | translate }}</span>              
+
+            <div class="clearfix"></div>
+            <div class="addressFields" style="display:block;">
+            <div class="field-row margin-top-10">
+              <label for="cadKey" class="">{{'lbl_legaladress' | translate }}<br />{{'lbl_andnumder' | translate }}</label>
+              <input type="text" value="" id="cadKey" name="legaladress" ng-class="{ 'hasError': subscriberInfoForm.$submitted && subscriberInfoForm.legaladress.$invalid }" ng-pattern="alphanumericPattern" 
+              maxlength="250" ng-model="customerInfo.address.addressLine1"/>
+            </div>
+            <span class="required"  style="padding-left:5px;"  ng-show="subscriberInfoForm.legaladress.$error.pattern">{{'lbl_texterrormessage22' | translate }}</span>
+            <div class="field-row margin-top-10">
+           			 <label for="city" class="">{{'lbl_city' | translate }}</label>
+           			 <input type="text" value="" id="city" name="salesCity" ng-class="{ 'hasError': (subscriberInfoForm.$submitted && subscriberInfoForm.salesCity.$invalid) || (subscriberInfoForm.salesCity.$error.pattern) }" ng-pattern="alphanumericPattern" maxlength="250" ng-model="customerInfo.address.city"/> 
+         	 </div>
+         	 <span class="required textrightallign" ng-show="subscriberInfoForm.salesCity.$error.pattern">{{'lbl_texterrormessage22' | translate }}</span>
+              <div class="field-row margin-top-10">
+                <label for="saleKey" class=""><span class="required">*</span>{{'lbl_suburb' | translate }}</label>
+                <input type="text" value="" name="suburb" id="saleKey" ng-class="{ 'hasError': (subscriberInfoForm.$submitted && subscriberInfoForm.suburb.$invalid) || (subscriberInfoForm.suburb.$error.pattern) }" ng-pattern="alphanumericPattern" maxlength="250" ng-model="customerInfo.address.suburb" required/>
+              </div>             
+            <span class="required textrightallign" ng-show="subscriberInfoForm.$submitted && subscriberInfoForm.suburb.$error.required ">{{'lbl_commonrequirederror' | translate }}</span>
+            <span class="required textrightallign" ng-show="subscriberInfoForm.suburb.$error.pattern">{{'lbl_texterrormessage22' | translate }}</span>
+               
+            <div class="field-row margin-top-10">
+                <label for="cadKey" class=""><span class="required">*</span>{{'lbl_municipaloffice' | translate }}</label>
+                <input type="text" value="" id="cadKey" name="municipaloffice" focus="true" ng-class="{ 'hasError': (subscriberInfoForm.$submitted && subscriberInfoForm.municipaloffice.$invalid) || (subscriberInfoForm.municipaloffice.$error.pattern)}" ng-pattern="alphanumericPattern" maxlength="250" ng-model="customerInfo.address.municipalOffice" required/>
+			</div>   
+            <span class="required textrightallign" ng-show="subscriberInfoForm.$submitted && subscriberInfoForm.municipaloffice.$error.required ">{{'lbl_commonrequirederror' | translate }}</span>
+            <span class="required textrightallign" ng-show="subscriberInfoForm.municipaloffice.$error.pattern">{{'lbl_texterrormessage22' | translate }}</span>                          
+			<div class="field-row margin-top-10">
+              <label for="state" class=""><span class="required">*</span>{{'lbl_state' | translate }}</label>
+              <div class="column">               
+                <select style="width: 200px;" class="mod-select span4 required" id="state" ng-class="{ 'hasError': (subscriberInfoForm.$submitted && subscriberInfoForm.state.$invalid) || (subscriberInfoForm.state.$error.pattern)}" name="state" title="State" data-required="true" ng-change="changeToDeliveryAddressState()" ng-model="customerInfo.address.state" required>
+                     <option value="" data-default-placeholder="true" selected="">{{'lbl_selectone' | translate }}</option> 
+                     <option ng-repeat="state in stateList" value="{{state.name}}">{{state.name}}</option>
+                  </select>               
+              <span class="required" ng-show="subscriberInfoForm.$submitted && subscriberInfoForm.state.$error.required ">{{'lbl_texterrormessage12' | translate }}</span>
+            </div>
+            </div>                        
+              <div class="clearfix"></div>
+              <div class="field-row margin-top-10">
+                <label for="cadKey" class=""><span class="required">*</span>{{'lbl_z.c.' | translate }}</label>
+                <input type="text" maxlengrh="5" value="" id="cadKey" name="zip" ng-class="{ 'hasError': (subscriberInfoForm.$submitted && subscriberInfoForm.zip.$invalid) || (subscriberInfoForm.zip.$error.pattern)}" ng-pattern="zcPattern" maxlength="10" ng-model="customerInfo.address.zip" required/>
+              </div>
+              <span class="required textrightallign" ng-show="subscriberInfoForm.$submitted && subscriberInfoForm.zip.$error.required ">{{'lbl_commonrequirederror' | translate }}</span>
+              <span class="required textrightallign" ng-show="subscriberInfoForm.zip.$error.pattern">{{'lbl_texterrormessage13' | translate }}</span>
+              <div class="field-row margin-top-10">
+                <label for="phoneNumber" class="">{{'lbl_phone' | translate }}</label>
+                <input type="text" value="" name="phoneNumber" id="phoneNumber" ng-class="{'hasError': subscriberInfoForm.$submitted && subscriberInfoForm.phoneNumber.$invalid}" ng-pattern="phonePattern" minlength="10" maxlength="12" placeholder="XXXXXXXXXX" ng-model="customerInfo.customer.phoneNumber" />
+              </div>
+              <span class="required textrightallign" ng-show="subscriberInfoForm.phoneNumber.$error.pattern">{{'lbl_texterrormessage8' | translate }}</span>
+              <div class="field-row margin-top-10">
+                <label for="cadKey" class=""><span class="required">*</span>{{'lbl_typeofid' | translate }}</label>
+                <input type="text" class="" value="" id="cadKey" name="idType" ng-class="{ 'hasError': (subscriberInfoForm.$submitted && subscriberInfoForm.idType.$invalid) || (subscriberInfoForm.idType.$error.pattern)}" ng-pattern="alphanumericPattern" maxlength="250" ng-model="customerInfo.customer.idType" required/>
+              </div> 
+              <span class="required textrightallign" ng-show="subscriberInfoForm.$submitted && subscriberInfoForm.idType.$error.required ">{{'lbl_commonrequirederror' | translate }}</span>
+              <span class="required textrightallign" ng-show="subscriberInfoForm.idType.$error.pattern">{{'lbl_texterrormessage22' | translate }}</span>
+              <div class="field-row margin-top-10">
+                <label for="saleKey" class=""><span class="required">*</span>{{'lbl_noofid' | translate }}</label>
+                <input type="text" class="" value="" id="saleKey" name="idnumber" ng-class="{ 'hasError': (subscriberInfoForm.$submitted && subscriberInfoForm.idnumber.$invalid) || (subscriberInfoForm.idnumber.$error.pattern)}" ng-pattern="alphanumericPattern" maxlength="250" ng-model="customerInfo.customer.idNumber" required/>
+              </div> 
+              <span class="required textrightallign" ng-show="subscriberInfoForm.$submitted && subscriberInfoForm.idnumber.$invalid && subscriberInfoForm.idnumber.$error.required ">{{'lbl_commonrequirederror' | translate }}</span>
+              <span class="required textrightallign" ng-show="subscriberInfoForm.idnumber.$error.pattern">{{'lbl_texterrormessage22' | translate }}</span>
+			  <div class="field-row margin-top-10">
+                <label for="saleKey" class="">{{'lbl_custcategory' | translate }}</label>
+                <input type="text" class="" value="" id="saleKey" name="customerCategory" ng-class="{ 'hasError': (subscriberInfoForm.$submitted && subscriberInfoForm.customerCategory.$invalid) || (subscriberInfoForm.customerCategory.$error.pattern)}" ng-pattern="alphanumericPattern" maxlength="250" ng-model="customerInfo.customer.customerCategory" />            
+              </div>
+              <span class="required textrightallign" ng-show="subscriberInfoForm.customerCategory.$error.pattern">{{'lbl_texterrormessage22' | translate }}</span>  
+            </div>
+            <div class="clearfix"></div>
+            
+            <h2 class="marT30">{{'lbl_acctype' | translate }}:</h2>         
+                    
+            <div class="field-row">
+              <label></label>
+              <div class="column">
+                <label for="smallAccount" class="checkbox" role="option">
+                  <input id="smallAccount" name="accountType" value="Small Account" type="checkbox" ng-model="customerInfo.customer.accountType" ng-checked="customerInfo.customer.accountType=='Small Account'" ng-true-value="'Small Account'" ng-false-value="''" >
+                  <i class="skin"></i> <span>{{'Small Account' | translate }}</span> </label>
+              </div>
+              <div class="column">
+                <label for="bigAccount" class="checkbox" role="option">
+                  <input id="bigAccount" value="Big Account" name="accountType" type="checkbox" ng-model="customerInfo.customer.accountType"  ng-checked="customerInfo.customer.accountType=='Big Account'" ng-true-value="'Big Account'" ng-false-value="''">
+                  <i class="skin"></i> <span>{{'Big Account' | translate }}</span> </label>
+              </div>
+            </div>
+            
+          </uib-accordion-group>
+          </uib-accordion> 
+          <div class="clearfix"></div>
+           <uib-accordion close-others="true">			 
+	    <uib-accordion-group heading="{{'lbl_generalsalesinfo' | translate }}:" is-open="true">
+      	<div class="col-md-12">
+            <p class="contactInformationText">{{'lbl_deliverycontent' | translate }}</p>
+            <!--div class="requiredFields installationFormReq"><span class="required">*</span>Required fields</div-->
+            
+            <div class="field-row">
+                <label for="legalPhone" class="">{{'lbl_samesaabove' | translate }}</label>                
+                <div class="column">
+                <label for="Delivery" class="checkbox" role="option">
+                  <input id="Delivery" value="Delivery" type="checkbox" ng-click="addressSelection('Delivery')"  ng-model="addressTypeInit.deliveryCheck">
+                 <i class="skin"></i>  <!-- <span>{{'lbl_samesaabove' | translate }}</span>  --></label>
+              </div>               
+              </div>
+            <div class="clearfix"></div> 
+
+            <div class="field-row">
+              <label>{{'lbl_dateofdelivery' | translate }}</label>
+              	<div class="column">
+                    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++ -->
+                      <!--  <span class="cssIcon-calendar">
+                          <button type="button" class="faux-input" onclick="$('#calendar3').trigger('click')" ><span class="hidden-spoken">{{'lbl_doubletap' | translate}}.</span></button>
+                          <input id="calendar3" class="datepicker-input" value="09/08/2015" data-provide="datepicker" aria-describedby="datepicker" tabindex="-1" aria-hidden="true" readonly type="text" />
+                       </span> -->
+                       
+                 <span class="cssIcon-calendar">
+            			<button type="button" class="faux-input" ng-click="open1()"></button>
+            			<input type="text"  uib-datepicker-popup="{{format}}" ng-model="DetailInformation.deliveryInformation.deliveryInfo.deliveryDate" is-open="popup1.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" 
+            			 close-text="Close" alt-input-formats="altInputFormats" readonly />
+            	 </span>
+        		
+                       
+                       
+                    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++ -->
+            	</div>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <div class="field-row">
+              <label>{{'lbl_deliverytimeequip' | translate }}</label>
+              	<div class="column">
+              		<span class="date-inline-label">{{'lbl_between' | translate }}</span>
+                </div>
+
+                <div class="column">
+                    <select class="mod-select" id="phoneType2" title="Expiration year" style="width: 100px;"  ng-model="delivery.StartTime">
+                        <option value="" selected="{{'lbl_hhmm' | translate }}">{{'lbl_hhmm' | translate }}</option>
+                        <option value="00:00">00:00</option>
+						<option value="00:30">00:30</option>
+						<option value="01:00">01:00</option>
+						<option value="01:30">01:30</option>
+						<option value="02:00">02:00</option>
+						<option value="02:30">02:30</option>
+						<option value="03:00">03:00</option>
+						<option value="03:30">03:30</option>
+						<option value="04:00">04:00</option>
+						<option value="04:30">04:30</option>
+						<option value="05:00">05:00</option>
+						<option value="05:30">05:30</option>
+						<option value="06:00">06:00</option>
+						<option value="06:30">06:30</option>
+						<option value="07:00">07:00</option>
+						<option value="07:30">07:30</option>
+						<option value="08:00">08:00</option>
+						<option value="08:30">08:30</option>
+						<option value="09:00">09:00</option>
+						<option value="09:30">09:30</option>
+						<option value="10:00">10:00</option>
+						<option value="10:30">10:30</option>
+						<option value="11:00">11:00</option>
+						<option value="11:30">11:30</option>
+						<option value="12:00">12:00</option>
+						<option value="12:30">12:30</option>
+						<option value="13:00">13:00</option>
+						<option value="13:30">13:30</option>
+						<option value="14:00">14:00</option>
+						<option value="14:30">14:30</option>
+						<option value="15:00">15:00</option>
+						<option value="15:30">15:30</option>
+						<option value="16:00">16:00</option>
+						<option value="16:30">16:30</option>
+						<option value="17:00">17:00</option>
+						<option value="17:30">17:30</option>
+						<option value="18:00">18:00</option>
+						<option value="18:30">18:30</option>
+						<option value="19:00">19:00</option>
+						<option value="19:30">19:30</option>
+						<option value="20:00">20:00</option>
+						<option value="20:30">20:30</option>
+						<option value="21:00">21:00</option>
+						<option value="21:30">21:30</option>
+						<option value="22:00">22:00</option>
+						<option value="22:30">22:30</option>
+						<option value="23:00">23:00</option>
+						<option value="23:30">23:30</option>
+
+                    </select>
+                </div>
+
+				<div class="column" style="padding-left: 10px;">
+                    <span class="date-inline-label">{{'lbl_and' | translate }}</span>
+                </div>
+
+                <div class="column">
+                    <select class="mod-select" id="3" style="width: 100px;" ng-model="delivery.EndTime">
+                      <option value="" selected="{{'lbl_hhmm' | translate }}">{{'lbl_hhmm' | translate }}</option>
+                      <option value="00:00">00:00</option>
+						<option value="00:30">00:30</option>
+						<option value="01:00">01:00</option>
+						<option value="01:30">01:30</option>
+						<option value="02:00">02:00</option>
+						<option value="02:30">02:30</option>
+						<option value="03:00">03:00</option>
+						<option value="03:30">03:30</option>
+						<option value="04:00">04:00</option>
+						<option value="04:30">04:30</option>
+						<option value="05:00">05:00</option>
+						<option value="05:30">05:30</option>
+						<option value="06:00">06:00</option>
+						<option value="06:30">06:30</option>
+						<option value="07:00">07:00</option>
+						<option value="07:30">07:30</option>
+						<option value="08:00">08:00</option>
+						<option value="08:30">08:30</option>
+						<option value="09:00">09:00</option>
+						<option value="09:30">09:30</option>
+						<option value="10:00">10:00</option>
+						<option value="10:30">10:30</option>
+						<option value="11:00">11:00</option>
+						<option value="11:30">11:30</option>
+						<option value="12:00">12:00</option>
+						<option value="12:30">12:30</option>
+						<option value="13:00">13:00</option>
+						<option value="13:30">13:30</option>
+						<option value="14:00">14:00</option>
+						<option value="14:30">14:30</option>
+						<option value="15:00">15:00</option>
+						<option value="15:30">15:30</option>
+						<option value="16:00">16:00</option>
+						<option value="16:30">16:30</option>
+						<option value="17:00">17:00</option>
+						<option value="17:30">17:30</option>
+						<option value="18:00">18:00</option>
+						<option value="18:30">18:30</option>
+						<option value="19:00">19:00</option>
+						<option value="19:30">19:30</option>
+						<option value="20:00">20:00</option>
+						<option value="20:30">20:30</option>
+						<option value="21:00">21:00</option>
+						<option value="21:30">21:30</option>
+						<option value="22:00">22:00</option>
+						<option value="22:30">22:30</option>
+						<option value="23:00">23:00</option>
+						<option value="23:30">23:30</option>
+                    </select>
+            	</div>
+            </div>
+                       <div class="clearfix"></div>
+            <div class="field-row topPad10">
+              <label><!--span class="required">*</span-->{{'lbl_deliveryaddstreet' | translate }}</label>
+              <input ng-disabled="sameAsAbove" type="text" name="shippingDeliveryAddress"  ng-model="DetailInformation.deliveryInformation.deliveryAddress.addressLine1" ng-class="{ 'hasError': (subscriberInfoForm.$submitted && subscriberInfoForm.shippingDeliveryAddress.$invalid) || (subscriberInfoForm.shippingDeliveryAddress.$error.pattern) }" ng-pattern="alphanumericPattern" maxlength="250" >
+            </div>
+             <span class="required textrightallign" ng-show="subscriberInfoForm.shippingDeliveryAddress.$error.pattern">{{'lbl_texterrormessage22' | translate }}</span>
+            <div class="field-row">
+              <label><!--span class="required">*</span-->{{'lbl_city' | translate }}</label>
+              <input ng-disabled="sameAsAbove" type="text" name="shippingCity" class="short" ng-model="DetailInformation.deliveryInformation.deliveryAddress.city"  ng-class="{ 'hasError': (subscriberInfoForm.$submitted && subscriberInfoForm.shippingCity.$invalid) || (subscriberInfoForm.shippingCity.$error.pattern) }" ng-pattern="alphanumericPattern" maxlength="250" />
+            </div>
+            <span class="required textrightallign" ng-show="subscriberInfoForm.shippingCity.$error.pattern">{{'lbl_texterrormessage22' | translate }}</span>
+            <div class="field-row">
+              <label><!--span class="required">*</span-->{{'lbl_suburb' | translate }}</label>
+              <input ng-disabled="sameAsAbove" type="text" name="shippingSuperb" class="short" ng-model="DetailInformation.deliveryInformation.deliveryAddress.suburb"  ng-class="{ 'hasError': (subscriberInfoForm.$submitted && subscriberInfoForm.shippingSuperb.$invalid) || (subscriberInfoForm.shippingSuperb.$error.pattern) }" ng-pattern="alphanumericPattern" maxlength="250" />
+            </div>
+            <span class="required textrightallign" ng-show="subscriberInfoForm.shippingSuperb.$error.pattern">{{'lbl_texterrormessage22' | translate }}</span>
+            <div class="field-row">
+              <label>
+              <!--span class="required">*</span-->{{'lbl_municipaloffice' | translate }}
+              </label>
+              <div class="column">
+                <input ng-disabled="sameAsAbove" type="text" name="shippingMunicipaloffice" class="short" ng-model="DetailInformation.deliveryInformation.deliveryAddress.municipalOffice" ng-class="{ 'hasError': (subscriberInfoForm.$submitted && subscriberInfoForm.shippingMunicipaloffice.$invalid) || (subscriberInfoForm.shippingMunicipaloffice.$error.pattern) }" ng-pattern="alphanumericPattern" maxlength="250" />
+                <div class="clearfix"></div>
+              </div>
+			  <div class="clearfix"></div>
+			  <span class="required textrightallign" ng-show="subscriberInfoForm.shippingMunicipaloffice.$error.pattern">{{'lbl_texterrormessage22' | translate }}</span>
+            </div>
+			
+            <div class="field-row">
+              <label><!--span class="required">*</span-->{{'lbl_state' | translate }}</label>
+              <div class="column" id="deliveryStateDiv">
+              	<input type="hidden" id="delStateHidden" value="{{'lbl_selectone' | translate }}" />
+              	<select ng-disabled="sameAsAbove" class="mod-select" id="deliveryState" title="{{'lbl_selectone' | translate }}" style="width: 200px;" ng-model="DetailInformation.deliveryInformation.deliveryAddress.state">
+                  <option value="" data-default-placeholder="true" selected="">{{'lbl_selectone' | translate }}</option>
+                  	<option ng-repeat="state in stateList" value="{{state.name}}">{{state.name}}</option>
+                </select>
+                <div class="clearfix"></div>
+              </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="field-row">
+              <label class="labelMargin">{{'lbl_z.c.' | translate }}</label>
+              <div class="column">
+              <input ng-disabled="sameAsAbove" type="text" name="zip2" class="short" ng-model="DetailInformation.deliveryInformation.deliveryAddress.zip" ng-class="{'hasError': (subscriberInfoForm.$submitted && subscriberInfoForm.zip2.$invalid) || (subscriberInfoForm.zip2.$error.pattern) }" ng-pattern="zcPattern" maxlength="10" />
+            </div>
+			<div class="clearfix"></div>
+            <span class="required textrightallign" ng-show="subscriberInfoForm.zip2.$error.pattern">{{'lbl_texterrormessage13' | translate }}</span>
+
+            <div class="field-row">
+              <label>{{'lbl_phone' | translate }}</label>
+              	<div class="column">
+              		<input ng-disabled="sameAsAbove" type="text" name="phone2" class="short" ng-model="DetailInformation.deliveryInformation.deliveryInfo.phoneNumber" ng-class="{'hasError': (subscriberInfoForm.$submitted && subscriberInfoForm.phone2.$invalid) || (subscriberInfoForm.phone2.$error.pattern)}" ng-pattern="phonePattern" minlength="10" maxlength="12" placeholder="XXXXXXXXXX" />
+            	</div>
+            </div>
+			<div class="clearfix"></div>
+            <span class="required textrightallign" ng-show="subscriberInfoForm.phone2.$error.pattern">{{'lbl_texterrormessage8' | translate }}</span>
+
+            <div class="field-row">
+              <label>{{'lbl_personauth' | translate }}</label>
+              	<div class="column">
+              		<input ng-disabled="sameAsAbove" type="text" name="shippingPersonauth" class="short" ng-model="DetailInformation.deliveryInformation.deliveryInfo.firstName" ng-class="{ 'hasError': ( subscriberInfoForm.$submitted && subscriberInfoForm.shippingPersonauth.$invalid ) || (subscriberInfoForm.shippingPersonauth.$error.pattern) }" ng-pattern="alphanumericPattern" maxlength="250" />
+            	</div>
+            </div>
+			<div class="clearfix"></div>
+            <span class="required textrightallign" ng-show="subscriberInfoForm.shippingPersonauth.$error.pattern">{{'lbl_texterrormessage22' | translate }}</span>
+            
+
+          </div>
+         </div>
+         <div class="clearfix"></div>
+        </uib-accordion-group>
+        </uib-accordion> 
+          
+         <div class="clearfix"></div> 
+                
+          <uib-accordion close-others="true">			 
+ <uib-accordion-group heading="{{'lbl_billinginfo' | translate }}:" is-open="true">
+      	<div class="col-md-12">
+            <p class="contactInformationText">{{'lbl_billinginfocontent' | translate }}</p>
+            <div class="field-row topPad10">
+              <label><!--span class="required">*</span-->{{'lbl_modality' | translate }}</label>
+                      <div class="column">
+
+                         <label for="fancyCheck1" class="checkbox" role="option">
+                            <input id="fancyCheck1" value="Postpaid" type="checkbox" ng-model="DetailInformation.paymentInfo.payment.paymentMode" ng-true-value="'Postpaid'" ng-false-value="''">
+                            <i class="skin"></i>
+                            <span>{{'lbl_postpaid' | translate }}</span>
+                         </label>
+
+                      </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="field-row">
+              <label><!--span class="required">*</span-->{{'lbl_methodofpayment' | translate }}</label>
+                     <div class="column">
+                      	<label for="fancyCheck2" class="checkbox" role="option">
+                            <input id="fancyCheck2" type="checkbox" ng-checked="DetailInformation.paymentInfo.payment.paymentType=='Personal'" ng-true-value="'Personal'" ng-false-value="''" value="Personal" ng-model="DetailInformation.paymentInfo.payment.paymentType" ng-click="changeValidator()">
+                            <i class="skin"></i>
+                            <span>{{'lbl_personal' | translate }}</span>
+                         </label>
+                      </div>
+                      <div class="column">
+                      	<label for="fancyCheck3" class="checkbox" role="option">
+                            <input id="fancyCheck3" type="checkbox" ng-checked="DetailInformation.paymentInfo.payment.paymentType=='Business'" ng-true-value="'Business'" ng-false-value="''" value="Business" ng-model="DetailInformation.paymentInfo.payment.paymentType" ng-click="changeValidator()">
+                            <i class="skin"></i>
+                            <span>{{'lbl_legalentities' | translate }}</span>
+                         </label>
+                      </div>
+                      
+                       <div class="column">
+                      	<label for="fancyCheck4" class="checkbox" role="option">
+                            <input id="fancyCheck4" type="checkbox" ng-checked="DetailInformation.paymentInfo.payment.paymentType=='Government'" ng-true-value="'Government'" ng-false-value="''" value="Government" ng-model="DetailInformation.paymentInfo.payment.paymentType" ng-click="changeValidator()">
+                            <i class="skin"></i>
+                            <span>{{'lbl_government' | translate }}</span>
+                         </label>
+                      </div>
+                      <div class="column">
+                      	<label for="fancyCheck5" class="checkbox" role="option">
+                            <input id="fancyCheck5" type="checkbox" ng-checked="DetailInformation.paymentInfo.payment.paymentType=='Credit Card'" ng-true-value="'Credit Card'" ng-false-value="''" value="Credit Card" ng-model="DetailInformation.paymentInfo.payment.paymentType" ng-click="changeValidator()">
+                            <i class="skin"></i>
+                            <span>{{'lbl_creditcard' | translate }}</span>
+                         </label>
+                      </div>
+                      <div class="column">
+                      	<label for="fancyCheck6" class="checkbox" role="option">
+                            <input id="fancyCheck6" type="checkbox" ng-checked="DetailInformation.paymentInfo.payment.paymentType=='Debit Card'" ng-true-value="'Debit Card'" ng-false-value="''" value="Debit Card" ng-model="DetailInformation.paymentInfo.payment.paymentType" ng-click="changeValidator()">
+                            <i class="skin"></i>
+                            <span>{{'lbl_debitcard' | translate }}</span>
+                         </label>
+                      </div>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <div class="field-row" ng-show="DetailInformation.paymentInfo.payment.paymentType=='Credit Card' || DetailInformation.paymentInfo.payment.paymentType=='Debit Card'">
+              <label>
+              <span class="required">*</span>{{'lbl_cardno' | translate }}
+              </label>
+              <div class="column">
+                <input type="text" name="cardNumber" ng-class="{'hasError': (subscriberInfoForm.$submitted && subscriberInfoForm.cardNumber.$invalid) || (subscriberInfoForm.cardNumber.$error.pattern)}" 
+                ng-pattern="{{validator.pattern}}" ng-minlength="{{validator.minLength}}" maxlength="{{validator.maxLength}}" class="short" 
+                ng-model="DetailInformation.paymentInfo.creditCard.cardNumber" 
+                ng-required="DetailInformation.paymentInfo.payment.paymentType=='Credit Card' || DetailInformation.paymentInfo.payment.paymentType=='Debit Card'"/>
+              </div>
+			  <div class="clearfix"></div>
+              <span class="required textrightallign" ng-show="subscriberInfoForm.cardNumber.$error.minlength || subscriberInfoForm.cardNumber.$error.pattern">{{'lbl_texterrormessage16' | translate }}</span> 
+              <span class="required textrightallign" ng-show="subscriberInfoForm.$submitted && subscriberInfoForm.cardNumber.$error.required">{{'lbl_commonrequirederror' | translate }}</span>
+            </div>
+              <div class="field-row" ng-show="DetailInformation.paymentInfo.payment.paymentType=='Credit Card' || DetailInformation.paymentInfo.payment.paymentType=='Debit Card'">
+              <label><span class="required">*</span>{{'lbl_expedition' | translate }}</label>
+              <div class="column margin-right-10">
+                <select ng-change="changeDates()" class="mod-select" ng-class="{'hasError': subscriberInfoForm.$submitted && subscriberInfoForm.issueMonth.$invalid }" name="issueMonth" id="phoneType1" style="width:85px;" ng-model="exped.month" 
+                ng-required="DetailInformation.paymentInfo.payment.paymentType=='Credit Card' || DetailInformation.paymentInfo.payment.paymentType=='Debit Card'">
+                  <option value="" selected="{{'lbl_mm' | translate }}">- {{'lbl_mm' | translate }} -</option>
+                  <option value="01">01</option>
+                  <option value="02">02</option>
+                  <option value="03">03</option>
+                  <option value="04">04</option>
+                  <option value="05">05</option>
+                  <option value="06">06</option>
+                  <option value="07">07</option>
+                  <option value="08">08</option>
+                  <option value="09">09</option>
+                  <option value="10">10</option>
+                  <option value="11">11</option>
+                  <option value="12">12</option>               
+                </select>
+				<span class="required" ng-show="subscriberInfoForm.$submitted && (subscriberInfoForm.issueMonth.$invalid || subscriberInfoForm.issueYear.$invalid )">{{'lbl_texterrormessage14' | translate }}</span>
+              </div>
+
+              <div class="column">
+                <select ng-change="changeDates()" class="mod-select"  ng-class="{'hasError': subscriberInfoForm.$submitted && subscriberInfoForm.issueYear.$invalid }" name="issueYear" id="phoneType1" style="width:80px;" ng-model="exped.year" 
+                ng-required="DetailInformation.paymentInfo.payment.paymentType=='Credit Card' || DetailInformation.paymentInfo.payment.paymentType=='Debit Card'">
+                  <option value="" selected="{{'lbl_yy' | translate }}">- {{'lbl_yy' | translate }} -</option>
+                  <option value="2016">16</option>
+                  <option value="2017">17</option>
+                  <option value="2018">18</option>
+                  <option value="2019">19</option>
+                  <option value="2020">20</option>
+                  <option value="2021">21</option>
+                  <option value="2022">22</option>
+                  <option value="2023">23</option>
+                  <option value="2024">24</option>
+                  <option value="2025">25</option>
+                  <option value="2026">26</option>
+                  <option value="2027">27</option>
+                  <option value="2028">28</option>
+                  <option value="2029">29</option>
+                  <option value="2030">30</option>
+                  <option value="2031">31</option>
+                  <option value="2032">32</option>
+                  <option value="2033">33</option>
+                  <option value="2034">34</option>
+                  <option value="2035">35</option>
+                  <option value="2036">36</option>
+                  <option value="2037">37</option>
+                  <option value="2038">38</option>
+                  <option value="2039">39</option>
+                  <option value="2040">40</option>
+                  <option value="2041">41</option>
+                  <option value="2042">42</option>
+                  <option value="2043">43</option>
+                  <option value="2044">44</option>
+                  <option value="2045">45</option>
+                  <option value="2046">46</option>
+                  <option value="2047">47</option>
+                  <option value="2048">48</option>
+                  <option value="2049">49</option>
+                  <option value="2050">50</option>
+                </select>
+              </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="field-row" ng-show="DetailInformation.paymentInfo.payment.paymentType=='Credit Card' || DetailInformation.paymentInfo.payment.paymentType=='Debit Card'">
+              <label class="labelMargin"><span class="required">*</span>{{'lbl_expires' | translate }}</label>
+
+              	<div class="column margin-right-10">
+                    <select ng-change="changeDates()" class="mod-select" ng-class="{'hasError': subscriberInfoForm.$submitted && subscriberInfoForm.expMonth.$invalid }" name="expMonth" id="phoneType1" style="width:85px;" ng-model="expir.month" 
+                    ng-required="DetailInformation.paymentInfo.payment.paymentType=='Credit Card' || DetailInformation.paymentInfo.payment.paymentType=='Debit Card'">
+                      <option value="" selected="{{'lbl_mm' | translate }}">- {{'lbl_mm' | translate }} -</option>
+                       	  <option value="01">01</option>
+		                  <option value="02">02</option>
+		                  <option value="03">03</option>
+		                  <option value="04">04</option>
+		                  <option value="05">05</option>
+		                  <option value="06">06</option>
+		                  <option value="07">07</option>
+		                  <option value="08">08</option>
+		                  <option value="09">09</option>
+		                  <option value="10">10</option>
+		                  <option value="11">11</option>
+		                  <option value="12">12</option>
+                    </select>
+					<span class="required" ng-show="subscriberInfoForm.$submitted && (subscriberInfoForm.expMonth.$invalid || subscriberInfoForm.expYear.$invalid) ">{{'lbl_texterrormessage14' | translate }}</span>
+                </div>
+
+                <div class="column">
+                    <select ng-change="changeDates()" class="mod-select" ng-class="{'hasError': subscriberInfoForm.$submitted && subscriberInfoForm.expYear.$invalid }" name="expYear" id="phoneType1" style="width:80px;" ng-model="expir.year" 
+                    ng-class="{'hasError': validCardDate}" ng-required="DetailInformation.paymentInfo.payment.paymentType=='Credit Card' || DetailInformation.paymentInfo.payment.paymentType=='Debit Card'">
+                      <option value="" selected="{{'lbl_yy' | translate }}">- {{'lbl_yy' | translate }} -</option>
+                      <option value="2016">16</option>
+	                  <option value="2017">17</option>
+	                  <option value="2018">18</option>
+	                  <option value="2019">19</option>
+	                  <option value="2020">20</option>
+	                  <option value="2021">21</option>
+	                  <option value="2022">22</option>
+	                  <option value="2023">23</option>
+	                  <option value="2024">24</option>
+	                  <option value="2025">25</option>
+	                  <option value="2026">26</option>
+	                  <option value="2027">27</option>
+	                  <option value="2028">28</option>
+	                  <option value="2029">29</option>
+	                  <option value="2030">30</option>
+	                  <option value="2031">31</option>
+	                  <option value="2032">32</option>
+	                  <option value="2033">33</option>
+	                  <option value="2034">34</option>
+	                  <option value="2035">35</option>
+	                  <option value="2036">36</option>
+	                  <option value="2037">37</option>
+	                  <option value="2038">38</option>
+	                  <option value="2039">39</option>
+	                  <option value="2040">40</option>
+	                  <option value="2041">41</option>
+	                  <option value="2042">42</option>
+	                  <option value="2043">43</option>
+	                  <option value="2044">44</option>
+	                  <option value="2045">45</option>
+	                  <option value="2046">46</option>
+	                  <option value="2047">47</option>
+	                  <option value="2048">48</option>
+	                  <option value="2049">49</option>
+	                  <option value="2050">50</option>
+                    </select>
+              	</div>
+				
+
+            <div class="clearfix"></div>
+          </div>
+          <div class="field-row">
+          <label class="labelMargin"></label>
+          	<div class="column margin-right-10">
+          	<span class="required" ng-show="subscriberInfoForm.$submitted && validCardDate ">{{'lbl_texterrormessage24' | translate }}</span>
+          	</div>
+          </div>
+         </div>
+         <div class="clearfix"></div>
+
+
+      	<div class="col-md-12">
+
+			<div class="field-row">
+            	<label><h5>{{'lbl_paymentconditions' | translate }}:</h5></label>
+            </div>
+
+            <div class="field-row topPad10">
+              <label><!--span class="required">*</span-->{{'lbl_equip' | translate }}</label>
+
+                  <div class="column">
+                  	     <label for="fancyCheck21" class="checkbox" role="option">
+                            <input id="fancyCheck21" type="checkbox" ng-checked="DetailInformation.paymentInfo.payment.equipment=='CC (credit card)'" ng-true-value="'CC (credit card)'" ng-false-value="''" value="CC (credit card)" ng-model="DetailInformation.paymentInfo.payment.equipment">
+                            <i class="skin"></i>
+                            <span>{{'lbl_cc' | translate }}</span>
+                         </label>
+                  </div>
+                  <div class="column">
+                  	     <label for="fancyCheck22" class="checkbox" role="option">
+                            <input id="fancyCheck22" type="checkbox" ng-checked="DetailInformation.paymentInfo.payment.equipment=='Charge or Return'" ng-true-value="'Charge or Return'" ng-false-value="''" value="Charge or Return" ng-model="DetailInformation.paymentInfo.payment.equipment">
+                            <i class="skin"></i>
+                            <span>{{'lbl_chargeorreturn' | translate }}</span>
+                         </label>
+                  </div>
+
+            </div>
+            <div class="clearfix"></div>
+            <div class="field-row">
+              <label><!--span class="required">*</span-->{{'lbl_service' | translate }}</label>
+
+                  <div class="column">
+                  	     <label for="fancyCheck23" class="checkbox" role="option">
+                            <input id="fancyCheck23" type="checkbox" ng-checked="DetailInformation.paymentInfo.payment.service=='CC charge'" ng-true-value="'CC charge'" ng-false-value="''" value="CC charge" ng-model="DetailInformation.paymentInfo.payment.service">
+                            <i class="skin"></i>
+                            <span>{{'lbl_cccharge' | translate }}</span>
+                         </label>
+                  </div>
+                  <div class="column">
+                  	     <label for="fancyCheck24" class="checkbox" role="option">
+                            <input id="fancyCheck24" type="checkbox" ng-checked="DetailInformation.paymentInfo.payment.service=='Cash'" ng-true-value="'Cash'" ng-false-value="''" value="Cash" ng-model="DetailInformation.paymentInfo.payment.service">
+                            <i class="skin"></i>
+                            <span>{{'lbl_cash' | translate }}</span>
+                         </label>
+                  </div>
+
+            </div>
+
+
+            <div class="clearfix"></div>
+
+         </div>
+         <div class="clearfix"></div>
+        </uib-accordion-group>
+        </uib-accordion><div class="clearfix"></div>
+        </div>
+        <div class="nav clearfix mobilePadLR20" id="footerButton">
+          <button type="button" class="button-secondary button-small blueButton" id="back" ng-click="returnStep()">{{'lbl_back' | translate}}</button>
+          <button type="submit" class="button-primary button-small blueButton" id="continue1"  ng-click="subscriberInfo()">{{'lbl_submit' | translate }}</button>
+        </div>
+      
+    </div></form>
+    </div>
+    
+  </div>
+  <!-- End Wrapper -->
+  <footer-container></footer-container>
+</div>

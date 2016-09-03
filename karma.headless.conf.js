@@ -18,11 +18,7 @@ module.exports = function (config) {
 			'app/common/ui-bootstrap-tpls.js',
 			'app/*.js',
             'app/login/*.js',
-            'app/step1/*.js',
-            'app/step2/*.js',
-            'app/step3/*.js',
-            'app/**/*.html',
-            'app/success/*.js'
+            'app/**/*.html'
         ],
 
         exclude: [

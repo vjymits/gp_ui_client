@@ -12,11 +12,11 @@
         	localStorageServiceProvider.setStorageType('sessionStorage');
         	$urlRouterProvider
             	.when('/login','/login')
-            	/*.when('/logout','/login')
+            	.when('/logout','/login')
             	.when('/step1','/step1')
             	.when('/step2','/step2')
             	.when('/step3','/step3')
-            	.when('/success','/success')*/
+            	.when('/success','/success')
             	.when('','/login')
             .otherwise('/login');
         }]).run(run);

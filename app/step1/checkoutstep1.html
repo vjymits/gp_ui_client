@@ -1,0 +1,186 @@
+<header-container></header-container>
+<div class="container">
+<div class="mainError errors" id="formErrors" ng-if="checkBoxCount == 1"><ul><li class="error">{{'lbl_errormessage' | translate }}</li></ul></div>
+  <div id="wrapper">
+  <form name="salesForm" novalidate>
+    <div class="frame-container eligibleMessage">
+      <div class="frame-content">
+        <div class="grandTitle visible-desktop visible-tablet">
+          <h1 class="pull-left">{{'lbl_vdsccheckout' | translate }}</h1>
+          <div class="pull-right faqIcon"><a  data-toggle="modal" role="button" data-target="#faqModal" href=""><img src="img/faq_icon.png" class="pull-left"/> {{'lbl_frequentque' | translate }}</a></div>
+        </div>
+      </div>
+      <div class="content">
+        <div class="contentSection">
+          <div class="step-wrapper" data-bubble-quantity="3">
+            <ol class="step-indicator" role="progressbar" aria-valuetext="">
+              <li class="step step-on" aria-hidden="true"></li>
+              <li class="step" aria-hidden="true"></li>
+              <li class="step" aria-hidden="true"></li>
+            </ol>
+            <h1 class="step-label"> {{'lbl_checkout1' | translate }}:
+              <div class="step-description">{{'lbl_generalhead' | translate }}</div>
+            </h1>
+          </div>
+         <!-- <p>{{'lbl_genheaddescription' | translate}}</p> -->
+          <div class="requiredFields1"><span class="required">*</span>{{'lbl_requiredfields' | translate }}</div>
+          <h2 class="marT30">{{'lbl_salesinfo' | translate }}</h2>
+          <!-- <span class="required" ng-if="checkBoxCount == 1"> {{'lbl_errormessage' | translate }} </span> -->          
+          <div class="field-row margin-top-10">
+            <label for="username" class=""><span class="required">*</span>{{'lbl_salesname' | translate }}</label>
+            <input type="text" value="" id="salesRepName" name="salesRepName" ng-class="{ 'hasError': salesForm.$submitted && salesForm.salesRepName.$invalid }" maxlength="250" ng-pattern="alphaNumeric" ng-model="salesRepInformation.firstName" required/>
+            </div>
+            <span class="required textrightallign" ng-show="salesForm.$submitted && salesForm.salesRepName.$error.required">{{'lbl_commonrequirederror' | translate }}</span>
+            <span class="required textrightallign" ng-show="salesForm.salesRepName.$error.pattern">{{'lbl_texterrormessage22' | translate }}</span>
+
+          <div class="field-row margin-top-10">
+            <label for="sale" class=""><span class="required">*</span>{{'lbl_placeofsale' | translate }}</label>
+            <input type="text" value="" id="sale" name="salesPlaceOfSale" ng-class="{ 'hasError': salesForm.$submitted && salesForm.salesPlaceOfSale.$invalid }" maxlength="250" ng-pattern="alphaNumeric" ng-model="salesRepInformation.placeOfSale" required/>            
+            </div>
+            <span class="required textrightallign" ng-show="salesForm.$submitted && salesForm.salesPlaceOfSale.$error.required">{{'lbl_commonrequirederror' | translate }}</span>
+            <span class="required textrightallign" ng-show="salesForm.salesPlaceOfSale.$error.pattern">{{'lbl_texterrormessage22' | translate }}</span>
+          
+          <div class="field-row margin-top-10">
+            <label for="city" class=""><span class="required">*</span>{{'lbl_city' | translate }}</label>
+            <input type="text" value="" id="city" name="salesCity" ng-class="{ 'hasError': salesForm.$submitted && salesForm.salesCity.$invalid }" maxlength="250" ng-pattern="alphaNumeric" ng-model="salesRepInformation.city" required/> 
+            </div>
+            <span class="required textrightallign" ng-show="salesForm.$submitted && salesForm.salesCity.$error.required">{{'lbl_commonrequirederror' | translate }}</span>
+            <span class="required textrightallign" ng-show="salesForm.salesCity.$error.pattern">{{'lbl_texterrormessage22' | translate }}</span>
+      
+          <div class="field-row margin-top-10">
+            <label for="folio" class="">{{'lbl_replacementordernumber' | translate }}</label>
+            <input type="text" value="" id="folio" name="salesReplacementFolio" ng-class="{ 'hasError': salesForm.$submitted && salesForm.salesReplacementFolio.$error.pattern }" ng-pattern="alphaNumericWithOutSpace" ng-model="salesRepInformation.replacementFolio" maxlength="250"/>
+          </div>
+          <div class="clearfix"></div>
+           <span class="required textrightallign" ng-show="salesForm.salesReplacementFolio.$error.pattern">{{'lbl_texterrormessage22' | translate }}</span>
+          
+          <div class="clearfix"></div>
+          <div class="field-row">
+            <label><span class="required">*</span>{{'lbl_saleschannel' | translate }}</label>		
+            <div >            
+			<div class="column">
+				<label for="fancyCheck1" class="radio" role="option">
+					<input id="fancyCheck1" value="Direct" name="channelDirect" type="radio" ng-model="salesRepInformation.salesChannel" ng-class="{ 'hasError': salesForm.$submitted && salesForm.channelDirect.$invalid }" required>
+					<i class="skin"></i>
+					<span>{{'lbl_direct' | translate }}</span>
+				 </label>
+			  </div>
+			  <div class="column">
+				<label for="fancyCheck2" class="radio" role="option">
+					<input id="fancyCheck2" value="Indirect" name="channelIndirect" type="radio" ng-model="salesRepInformation.salesChannel" ng-class="{ 'hasError': salesForm.$submitted && salesForm.channelIndirect.$invalid }" required>
+					<i class="skin"></i>
+					<span>{{'lbl_indirect' | translate }}</span>
+					
+				 </label>
+			  </div>
+			  <div class="column">
+				<label for="fancyCheck3" class="radio" role="option">
+					<input id="fancyCheck3" value="SIS" name="channelSIS" type="radio" ng-model="salesRepInformation.salesChannel" ng-class="{ 'hasError': salesForm.$submitted && salesForm.channelSIS.$invalid }" required>
+					<i class="skin"></i>
+					<span>{{'lbl_sis' | translate }}</span>
+				 </label>
+			  </div>
+			  <div class="column">
+				<label for="fancyCheck4" class="radio" role="option">
+					<input id="fancyCheck4" value="Kiosk" name="channelKiosk" type="radio" ng-model="salesRepInformation.salesChannel" ng-class="{ 'hasError': salesForm.$submitted && salesForm.channelKiosk.$invalid }" required>
+					<i class="skin"></i>
+					<span>{{'lbl_kiosk' | translate }}</span>
+				 </label>
+			  </div>
+			  <div class="column">
+				<label for="fancyCheck5" class="radio" role="option">
+					<input id="fancyCheck5" value="CAP" name="channelCAP" type="radio" ng-model="salesRepInformation.salesChannel" ng-class="{ 'hasError': salesForm.$submitted && salesForm.channelCAP.$invalid }" required>
+					<i class="skin"></i>
+					<span>{{'lbl_cap' | translate }}</span>
+				 </label>
+			  </div>
+			  <div class="column">
+				<label for="fancyCheck6" class="radio" role="option">
+					<input id="fancyCheck6" value="DS" name="channelDS" type="radio" ng-model="salesRepInformation.salesChannel" ng-class="{ 'hasError': salesForm.$submitted && salesForm.channelDS.$invalid }" required>
+					<i class="skin"></i>
+					<span>{{'lbl_ds' | translate }}</span>
+				 </label>
+			  </div>
+			  <div class="column">
+				<label for="fancyCheck7" class="radio" role="option">
+					<input id="fancyCheck7" value="NS" name="channelNS" type="radio" ng-model="salesRepInformation.salesChannel" ng-class="{ 'hasError': salesForm.$submitted && salesForm.channelNS.$invalid }" required>
+					<i class="skin"></i>
+					<span>{{'lbl_ns' | translate }}</span>
+				 </label>
+			  </div>
+			</div>
+          </div>
+                <div class="clearfix"></div>
+                    <span class="required textrightallign" ng-show="salesForm.$submitted && salesForm.channelIndirect.$error.required">{{'lbl_texterrormessage2' | translate }}</span>
+		  <div class="clearfix"></div>
+          <div class="field-row topPad10">
+            <label><span class="required">*</span>{{'lbl_appointmentdate' | translate }}</label>
+            <div class="column"> 
+              <!-- ++++++++++++++++++++++++++++++++++++++++++++++++ --> 
+              <!-- <span class="cssIcon-calendar">
+              <button type="button" class="faux-input" onclick="$('#calendar4').trigger('click')"><span class="hidden-spoken">Double tap to open or close the calendar.</span></button>
+              <input id="calendar4" class="datepicker-input"  data-provide="datepicker" aria-describedby="datepicker" tabindex="-1" aria-hidden="true" type="text" ng-model="salesRepInformation.appointmentDate"/> (in MM-dd-YYYY format)
+              </span> -->
+             <!--  <div class="col-md-6">
+            		<p class="input-group">
+            			<button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+            			<input type="text"  uib-datepicker-popup="{{format}}" ng-model="salesRepInformation.appointmentDate" is-open="popup1.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" readonly />
+            		</p>
+        		</div>  -->
+        		 <span class="cssIcon-calendar">
+            			<button type="button" class="faux-input" ng-click="open1()"></button>
+            			<input type="text" name="date"  uib-datepicker-popup="{{format}}" ng-model="salesRepInformation.appointmentDate" is-open="popup1.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" ng-class="{ 'hasError': salesForm.$submitted && salesForm.date.$invalid }"  close-text="Close" alt-input-formats="altInputFormats" readonly  required/>
+            	                   	 </span>            	                   	 
+            	  <!-- ++++++++++++++++++++++++++++++++++++++++++++++++ --> 
+                  </div>
+                      </div><div class="clearfix"></div>
+                      <span class="required textrightallign" ng-show="salesForm.$submitted && salesForm.date.$invalid">{{'lbl_texterrormessage3' | translate }}</span>
+                      
+          <div class="clearfix"></div>
+          <div class="field-row margin-top-10">
+            <label for="repKey" class=""><span class="required">*</span>{{'lbl_salesrepkey' | translate }}</label>
+            <input type="text" value="" id="repKey" name="salesRepKeyName" ng-class="{ 'hasError': salesForm.$submitted && salesForm.salesRepKeyName.$invalid }" ng-pattern="alphaNumeric" ng-maxlength="20" ng-model="salesRepInformation.salesRepKey" required/>
+          </div>
+            <span class="required textrightallign" ng-show="salesForm.$submitted && salesForm.salesRepKeyName.$error.required">{{'lbl_commonrequirederror' | translate }}</span>
+            <span class="required textrightallign" ng-show="salesForm.salesRepKeyName.$error.pattern">{{'lbl_texterrormessage22' | translate }}</span>
+            <span class="required textrightallign" ng-show="salesForm.salesRepKeyName.$error.maxlength">{{'lbl_texterrormessage4' | translate }}</span>
+           
+          <div class="field-row margin-top-10">
+            <label for="saleKey" class=""><span class="required">*</span>{{'lbl_pointofsalekey' | translate }}</label>
+            <input type="text" value="" id="saleKey" name="pointOfSaleKeyName" ng-class="{ 'hasError': salesForm.$submitted && salesForm.pointOfSaleKeyName.$invalid }" ng-pattern="alphaNumeric" maxlength="20" ng-model="salesRepInformation.pointOfSalekey" required/>
+          </div>
+            <span class="required textrightallign" ng-show="salesForm.$submitted && salesForm.pointOfSaleKeyName.$error.required">{{'lbl_commonrequirederror' | translate }}</span>
+            <span class="required textrightallign" ng-show="salesForm.pointOfSaleKeyName.$error.pattern">{{'lbl_texterrormessage22' | translate }}</span>
+            
+          <div class="field-row margin-top-10">
+            <label for="cadKey" class="">{{'lbl_cadkey' | translate }}</label>
+            <input type="text" value="" id="cadKey" name="CADKeyName" ng-class="{ 'hasError': salesForm.$submitted && salesForm.CADKeyName.$error.pattern }" ng-pattern="alphaNumeric" maxlength="20" ng-model="salesRepInformation.cadKey"/>
+          </div>
+             <span class="required textrightallign" ng-show="salesForm.CADKeyName.$error.pattern">{{'lbl_texterrormessage22' | translate }}</span>
+          
+          <div class="field-row margin-top-10">
+            <label for="cadName" class="">{{'lbl_cadname' | translate }}</label>
+            <input type="text" value="" id="cadName" name="CADNameName" ng-class="{ 'hasError': salesForm.$submitted && salesForm.CADNameName.$error.pattern }" ng-pattern="alphaNumeric" maxlength="100" ng-model="salesRepInformation.cadName"/>
+          </div> <span class="required textrightallign" ng-show="salesForm.CADNameName.$error.pattern">{{'lbl_texterrormessage22' | translate }}</span>
+          
+          <div class="field-row margin-top-10">
+            <label for="salesCoordinator" class="">{{'lbl_nameofsalesco' | translate }}</label>
+            <input type="text" value="" id="salesCoordinator" name="salesCoordinatorName" ng-class="{ 'hasError': salesForm.$submitted && salesForm.salesCoordinatorName.$error.pattern }" ng-pattern="alphaNumeric" maxlength="250" ng-model="salesRepInformation.salesCoordinator"/>
+          </div>
+          <div class="clearfix"></div>
+          <span class="required textrightallign" ng-show="salesForm.salesCoordinatorName.$error.pattern">{{'lbl_texterrormessage22' | translate }}</span>
+          
+          <div class="clearfix"></div>
+        </div>
+        <div class="nav clearfix mobilePadLR20" id="footerButton">
+          <button type="submit" class="button-primary button-small blueButton" id="continue" ng-click="salesRepInfo()">{{'lbl_submit' | translate }}</button>
+          <!-- ng-disabled=" " -->
+        </div>
+        <div class="clearfix"></div>       
+      </div>
+    </div>
+    </form>
+  </div>
+  <!-- End Wrapper -->
+  <footer-container></footer-container>
+  </div>
