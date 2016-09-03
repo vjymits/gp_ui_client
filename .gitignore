@@ -1,0 +1,13 @@
+target/
+**/*.iml
+**/*.ipr
+**/*.iws
+.idea
+out/
+build/
+**/.DS_Store
+rest/overlays/**
+node_modules
+PhantomJS_*
+reports
+app/bower_components/

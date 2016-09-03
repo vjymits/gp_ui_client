@@ -1,0 +1,69 @@
+
+/*****************
+TOOLTIP WRAPPERS
+*****************/
+
+.tip-white {
+	margin-top:10px; 
+	opacity:1;
+	z-index:1000;
+	text-align:left;
+	border:none;
+	padding:3px;
+	min-width:50px;
+	max-width:350px;
+	color:#666;
+	background-color:#fff;
+	background-image:url(../img/tip-white.png); /* bgImageFrameSize >= 10 should work fine */
+	/**
+	 * - If you set a background-image, border/padding/background-color will be ignored.
+	 *   You can set any padding to .tip-inner instead if you need.
+	 * - If you want a tiled background-image and border/padding for the tip,
+	 *   set the background-image to .tip-inner instead.
+	 */
+}
+.tip-white .tip-inner {
+	font: 13px/18px arial,sans-serif;
+	margin-top:-1px;
+	padding:8px;
+}
+.tip-inner{background: url(../img/backgroundwhite.gif) repeat-x scroll 100% 100% transparent !important }
+
+/* Configure an arrow image - the script will automatically position it on the correct side of the tip */
+.tip-white .tip-arrow-top {
+	margin-top:-3px;
+	margin-left:15px;
+	top:0;
+	left:44%;
+	width:16px;
+	min-height:10px;
+	background:url(../img/tip-white_arrows.png) no-repeat;
+}
+.tip-white .tip-arrow-right {
+	margin-top:-9px; /* approx. half the height to center it */
+
+	margin-left:-4px;
+	top:50%;
+	left:100%;
+	width:10px;
+	min-height:20px;
+	background:url(../img/tip-white_arrows.png) no-repeat -16px 0;
+}
+.tip-white .tip-arrow-bottom {
+	margin-top:-6px;
+	margin-left:15px;
+	top:100%;
+	left:44%;
+	width:16px;
+	min-height:13px;
+	background:url(../img/tip-white_arrows.png) no-repeat -32px 0;
+}
+.tip-white .tip-arrow-left {
+	margin-top:-9px; /* approx. half the height to center it */
+	margin-left:-6px;
+	top:50%;
+	left:0;
+	width:10px;
+	min-height:20px;
+	background:url(../img/tip-white_arrows.png) no-repeat -48px 0;
+}

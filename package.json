@@ -1,0 +1,41 @@
+{
+  "name": "Portal-Seed",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Synchronoss AttmexicoDoorToDoor Project",
+  "repository": "http://mavenrepo.synchronoss.net:8081/nexus/content/repositories/libs-snapshots",
+  "license": "MIT",
+  "devDependencies": {
+    "bower": "^1.3.1",
+    "gulp": "^3.9.0",
+    "gulp-replace": "^0.5.4",
+    "http-server": "^0.6.1",
+    "jasmine-core": "^2.3.4",
+    "karma": "~0.12",
+    "karma-chrome-launcher": "^0.1.12",
+    "karma-coverage": "^0.5.3",
+    "karma-firefox-launcher": "^0.1.6",
+    "karma-jasmine": "^0.3.5",
+    "karma-junit-reporter": "^0.3.8",
+    "karma-ng-html2js-preprocessor": "^0.2.1",
+    "karma-phantomjs-launcher": "^0.2.3",
+    "phantomjs": "^1.9.19",
+    "protractor": "^2.1.0",
+    "shelljs": "^0.2.6"
+  },
+  "scripts": {
+    "replace-name-preview": "/node_modules/replace/bin/replace.js myApp YOUR_APP_NAME app -r -p --include='*.js,*.html' --exclude=bower_components",
+    "replace-name": "/node_modules/replace/bin/replace.js myApp YOUR_APP_NAME app -r --include='*.js,*.html' --exclude=bower_components",
+    "postinstall": "bower install",
+    "prestart": "npm install",
+    "start": "http-server ./app -a localhost -p 8077 -c-1",
+    "pretest": "npm install",
+    "test": "karma start karma.conf.js",
+    "test-headless": "karma start karma.headless.conf.js --single-run",
+    "test-single-run": "karma start karma.conf.js  --single-run",
+    "preupdate-webdriver": "npm install",
+    "update-webdriver": "webdriver-manager update",
+    "preprotractor": "npm run update-webdriver",
+    "protractor": "protractor protractor.conf.js"
+  }
+}

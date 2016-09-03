@@ -1,0 +1,29 @@
+<header-container></header-container>
+<div class="container">
+  <div id="wrapper">
+    <div class="frame-container eligibleMessage">
+      <div class="frame-content">
+        <div class="grandTitle visible-desktop visible-tablet">
+          <h1 class="pull-left" ng-if="success.orderNumber != 'undefined' && success.orderNumber != ''">{{'lbl_vdscsuccess' | translate }} </h1>
+          <h1 class="pull-left" ng-if="success.orderNumber == 'undefined' || success.orderNumber == ''">{{'lbl_vdscfailure' | translate }} </h1>
+          <div class="pull-right faqIcon"><a  data-toggle="modal" role="button" data-target="#faqModal" href=""><img src="img/faq_icon.png" class="pull-left"/> {{'lbl_frequentque' | translate }}</a></div>
+        </div>
+      </div>
+      <div class="content" style="min-height:360px; vertical-align:middle"> <br />
+        <div class="loadingSuccessMessage" ng-if="success.orderNumber != 'undefined' && success.orderNumber != ''">
+          <h5>{{'lbl_yourorder' | translate }} <strong>{{success.orderNumber}}</strong> {{'lbl_submittedsuccess' | translate }}</h5>
+        </div>
+        <div class="loadingSuccessMessage" ng-if="success.orderNumber == 'undefined' || success.orderNumber == ''">
+          <h5><strong>{{'lbl_yourorderfailed' | translate }}</strong></h5>
+        </div>
+        <div class="clearfix"></div>
+        <div class="loadingSuccessMessage" id="footerButton">
+			<button type="button" ng-click="goHome()" class="button-primary button-small blueButton">{{'lbl_home' | translate }}</button>     
+   		</div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- End Wrapper -->
+  <footer-container></footer-container>
+</div>

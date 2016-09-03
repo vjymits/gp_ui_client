@@ -1,0 +1,100 @@
+div#faqArticleContent .expandImg {
+    background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo0MjEzMjZGRDI5MkYxMUUzOTM1QkM2M0Y4NDk5NzM0QyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo0MjEzMjZGRTI5MkYxMUUzOTM1QkM2M0Y4NDk5NzM0QyI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjQyMTMyNkZCMjkyRjExRTM5MzVCQzYzRjg0OTk3MzRDIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjQyMTMyNkZDMjkyRjExRTM5MzVCQzYzRjg0OTk3MzRDIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+09BDMwAAAbFJREFUeNpiZKvawoAHyAFxFBA7ArEWEIsC8W8gfgLED4H4ABCvBOL7uAxgxGEByOAOIA4DYmYG/OAf1JIKIH6ELsmERYMfEF8B4kgiDIeZAVJ7FUrjtSAfiNcDMS8D6YAHiJcCcSEuC8KBuB+Hr4gFjEDcCzULxQJQmM+BKqAUMELNkkO2oB3qRbzgTLoFGBMZXJ0gBgsQywNxBDG6dOWESfEJKAVWMEENZ2KgPgCbzQTNRLQCjqAg0sEm4yDGzaAhwo1VV4aWGAr/xpuvDAdefcWmVAdkgQg2mXB9KYYkBzWsFkyMNkXhzztwi+HA7tvYlIqy4PLbx++/GS4/eos1ktHFQWrxlUWggkuamAD92eoNptmrtxIbB0+ZoGUIrcAVkAX7aGjBfiZoUfuPBoaDi3FQJD8A4lXE5Ob8padJsQBk5gNYhSMHjQseKrn+CxBrgyogWBEBqolSgfg/FQz/DzXrEXp9sAJaWfyj0PBSqFlYa7SJQBwIxJ/JDJYYaIWDt07eBC2fVhDpm39QtaAwX4YuiauoeAStwMuRmi0gA2Cl3CtootgPTS33cNkOEGAAktVjwvyF/nAAAAAASUVORK5CYII=") 0 50% no-repeat;    
+    padding-left:30px;
+    height:24px;
+	display: inline-block;
+}
+
+div#faqArticleContent .collapseImg {
+    background: url("../img/FAQ-minus-icon.png") 0 50% no-repeat;   
+    padding-left:30px;
+    height:24px;
+	display: inline-block;
+}
+div#faqArticleContent .toggle_container {        
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding-left: 20px;
+    text-align: left;
+    width: 95%;
+    position: relative;
+}
+div#faqArticleContent a.toggle.expandImg {
+    color: #067ab4;
+    cursor: pointer;
+    font-family: Arial,sans-serif;        
+    font-weight: normal;        
+    text-decoration: none;
+    font-size:1.5em;
+}
+div#faqArticleContent a.toggle.expandImg:hover {
+    color: #067ab4;
+    cursor: pointer;
+    font-weight: normal;
+    text-decoration: underline;
+}
+div#faqArticleContent a.toggle.expandImg:focus {
+    color: #067ab4;
+    font-weight: normal;        
+    text-decoration: none;
+}
+div#faqArticleContent a.toggle.collapseImg {
+    color: #067ab4;
+    cursor: pointer;
+    font-family: Arial,sans-serif;        
+    font-weight: bold;        
+    text-decoration: none;
+    font-size:1.5em;
+}
+div#faqArticleContent a.toggle.collapseImg:hover {
+    color: #067ab4;
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: underline;
+}
+div#faqArticleContent a.toggle.collapseImg:focus {
+    color: #067ab4;
+    font-weight: bold;        
+    text-decoration: none;
+}
+div#faqArticles h1.header {
+    text-align:center;
+    font-size:32px;
+    padding:10px;
+}
+div#faqArticleContent h2.subhead {
+    text-align:center;
+    font-size:1.8em;
+    color:#666666;
+    margin-bottom:1.3em;
+}
+.toggle_header_off {
+    color: #3381b7;
+    cursor: pointer;
+    float: left;        
+    font-size: 1.2em;        
+    text-decoration: none;
+}
+#faqArticles {    
+    background-color: #F7F7F7;
+    border: 1px solid #E3E3E3;
+    border-radius: 5px;
+    text-align:left;        
+}    
+div#faqArticleContent div.faqExpandableContent div.fullWidthTile {
+    width:880px;
+}
+div#faqArticleContent div.faqExpandableContent div#uverseValueTiles {
+    margin-left:0;
+} 
+
+.faq-controls{
+	margin-bottom: 20px;
+}
+
+.faqdottedLineDivider {
+    /*background-image: url("../div-dotted-listgrid_96px.jpg");*/
+    border-bottom: 1px dotted #9f9f9f;
+    /*height: 1px;*/
+    margin:10px 95px 10px 20px;        
+}

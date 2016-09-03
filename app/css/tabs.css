@@ -1,0 +1,83 @@
+/**
+ * Copyright 2007-2013 Synchronoss Technologies, Inc.  All Rights Reserved.
+ *
+ * This source code is the confidential and proprietary information of
+ * Synchronoss Technologies, Inc.
+ *
+ * ("Confidential Information"). You shall not disclose such Confidential
+ * Information and shall use it only in accordance with the terms of the
+ * license agreement you entered into with Synchronoss Technologies.
+ */
+#content {
+	padding: 0;
+}
+.tabs, .ajaxtabs {
+	float: left;
+	z-index: 11;
+}
+#tabsLinks {
+	background: url("../img/bg-tab-sprite1.png") no-repeat center -54px;
+	position: relative;
+	width: 100%;
+}
+#tabsLinks ul li {
+	margin: 0;
+	border: 0 none;
+	display: block;
+	height: 54px;
+	float: left;
+}
+
+#tabsLinks li a {
+	text-align: center !important;
+	display: block !important;
+	color: #ffffff !important;
+	line-height: 53px;
+	padding: 0px 20px;
+	width: 100%;
+	height:54px;
+	font-family: Arial, sans-serif, Gotham, "Helvetica Neue", Helvetica;
+	font-size: 16px;
+	background:transparent;
+	text-decoration:underline;
+}
+
+#tabsLinks li.active a {
+	background: url("../img/bg-tab-sprite1.png") no-repeat center -108px;
+	font-weight: bold;
+	color: #ffffff;
+	display:block;
+	font-family: Arial, sans-serif, Gotham, "Helvetica Neue", Helvetica;
+	font-size: 16px;
+}
+.tab-group {
+	border: 0 none;
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+	border-top-right-radius: 0;
+}
+#tabsLinks .tab {
+	width: auto;
+}
+
+#tabsLinks li.red{
+	background: url("../img/bg-tab-sprite1.png") no-repeat right bottom;
+	font-weight: bold;
+	color: #ffffff;
+	display:block;
+	width:50%;
+}
+
+#tabsLinks li.red:hover{
+	background: url("../img/bg-tab-sprite1.png") no-repeat center bottom;
+	font-weight: bold;
+	color: #ffffff;
+	display:block;
+}
+#tabsLinks li.orange{
+	background: url("../img/bg-tab-sprite1.png") no-repeat left 0;
+	font-weight: bold;
+	color: #ffffff;
+	display:block;
+	width:50%;
+}

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
+<head ng-controller="AppCtrl as appCtrl">
+<title ng-bind="appCtrl.pageTitle"></title>
+  <meta charset="utf-8">   
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="keywords" content="">
+  <meta name="robots" content="INDEX,NO-FOLLOW">
+  <meta http-equiv="Cache-Control" content="no-cache,no-store,max-age=0,s-maxage=0,must-revalidate,proxy-revalidate,private,max-stale=0,post-check=0"/>
+  <meta http-equiv="Pragma" content="no-cache"/>
+  <meta http-equiv="Expires" content="0"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <link href="css/sandbox-styles.css" rel="stylesheet" />
+  <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.css" />    
+  <link rel="stylesheet" href="css/headerfooter.css" type="text/css" />
+  <link href="css/dropkick.css" rel="stylesheet" />
+  <link rel="stylesheet" href="css/main.css?v=2013.01.06.1459" type="text/css" />
+  <link href="css/bootstrap-responsive.css" rel="stylesheet" />
+  <link href="css/tooltip.css" rel="stylesheet" />
+  <link href="css/faqcontainer.css" rel="stylesheet" />
+
+</head>
+<body>
+
+  <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+      <![endif]-->
+
+      <div ui-view="main"></div>
+
+
+  <script type="text/javascript" src="bower_components/angular/angular.js"></script>
+  <script type="text/javascript" src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
+
+  <script type="text/javascript" src="common/ui-bootstrap-tpls.js"></script>
+  <script type="text/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+  
+  <!--  angular libraries  -->
+  <script src="bower_components/angular-animate/angular-animate.js"></script>
+  
+  <!--  angular translation libraries -->
+  <script src="bower_components/angular-translate/angular-translate.js"></script>
+  <script src="bower_components/angular-translate-loader-url/angular-translate-loader-url.js"></script>
+  <script src="bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
+   
+  <!-- Services  -->  
+  <script type="text/javascript" src="common/D2DAuthService.Module.js"></script>  
+  <script type="text/javascript" src="common/D2DAuthService.js"></script>
+  
+  <!-- Login Module -->
+  <script type="text/javascript" src="login/login.module.js"></script>
+  <script type="text/javascript" src="login/login.route.js"></script>
+  <script type="text/javascript" src="login/login.js"></script>
+  
+  <!--  Sales Rep Information module -->
+  <script type="text/javascript" src="step1/salesRep.module.js"></script>
+  <script type="text/javascript" src="step1/salesRep.route.js"></script>
+  <script type="text/javascript" src="step1/salesRep.js"></script>
+  
+  <!--  Subscriber Information module -->
+  <script type="text/javascript" src="step2/subscriber.module.js"></script>
+  <script type="text/javascript" src="step2/subscriber.route.js"></script>
+  <script type="text/javascript" src="step2/subscriber.js"></script>
+  
+  <!--  Details Information module -->
+  <script type="text/javascript" src="step3/details.module.js"></script>
+  <script type="text/javascript" src="step3/details.route.js"></script>
+  <script type="text/javascript" src="step3/details.js"></script>
+  
+  <!--  success module -->
+  <script type="text/javascript" src="success/success.module.js"></script>
+  <script type="text/javascript" src="success/success.route.js"></script>
+
+  <script type="text/javascript" src="app.module.js"></script>
+  <script type="text/javascript" src="app.route.js"></script>
+  <script type="text/javascript" src="app.controller.js"></script>
+  
+  <script type="text/javascript" src="common/headerDirective.js"></script>
+  <script type="text/javascript" src="common/footerDirective.js"></script>
+  
+  <script src="bower_components/jquery/dist/jquery.js" type="text/javascript"></script>
+  <!-- <script type="text/javascript" src="js/error-handling.js"></script> -->
+  <script type="text/javascript" src="common/faq.js"></script> 
+  <script src="common/global-sandbox.min.js"></script>
+
+
+</body>
+</html>
